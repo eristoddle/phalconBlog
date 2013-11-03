@@ -1,0 +1,235 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"pla",
+				"player1"
+			],
+			[
+				"pl",
+				"player1"
+			],
+			[
+				"fil",
+				"file_len"
+			],
+			[
+				"tot",
+				"totalnotdate"
+			],
+			[
+				"row",
+				"rowcount"
+			],
+			[
+				"cs",
+				"csvData"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/home/eristoddle/Dropbox/xampp/htdocs/phalconBlog/public/index.pph",
+		"/home/eristoddle/Dropbox/xampp/htdocs/phalconBlog/public/.htaccess",
+		"/home/eristoddle/Dropbox/xampp/htdocs/phalconBlog/.htaccess",
+		"/home/eristoddle/.wine/system.reg",
+		"/home/eristoddle/Dropbox/Packt/GettingStartedWithPhalconPHP/7673_01_code/7673_01_01.php",
+		"/home/eristoddle/Dropbox/xampp/php/php.ini",
+		"/home/eristoddle/Dropbox/xampp/htdocs/debian/dir23/server/.htaccess",
+		"/home/eristoddle/Dropbox/xampp/htdocs/debian/dir23/public/index.php",
+		"/home/eristoddle/Desktop/navicat101_premium_en/start_navicat",
+		"/home/eristoddle/Dropbox/Packt/Author bundle/convertMsWordDotToOpenOffice.sh",
+		"/home/eristoddle/Dropbox/xampp/htdocs/debian/af23/sites/default/settings.php",
+		"/home/eristoddle/Dropbox/xampp/htdocs/debian/dir23/server/public/index.php",
+		"/home/eristoddle/Downloads/FW Layers of dedupe.msg",
+		"/home/eristoddle/Dropbox/DocFetcher-1.1.7/docfetcher-daemon-linux",
+		"/home/eristoddle/Dropbox/Packt/convertMsWordDotToOpenOffice.sh",
+		"/home/eristoddle/Dropbox/xampp/htdocs/debian/af23/sites/all/modules/contrib/filecache/README.txt",
+		"/home/eristoddle/Dropbox/xampp/htdocs/debian/af23/sites/all/modules/contrib/memcache/README.txt",
+		"/home/eristoddle/Dropbox/xampp/htdocs/debian/af23/anywhereindb.php",
+		"/home/eristoddle/Dropbox/xampp/htdocs/debian/af23/index.php",
+		"/home/eristoddle/Dropbox/xampp/htdocs/debian/af23/.htaccess",
+		"/home/eristoddle/Desktop/RapidMiner.desktop",
+		"/home/eristoddle/Dropbox/tide/cloud_automator/Cloud Automater/dist/linux/Cloud Automater/Cloud Automater",
+		"/home/eristoddle/Desktop/GitEye.desktop",
+		"/home/eristoddle/rapidminer/scripts/RapidMinerGUI",
+		"/home/eristoddle/everpad/setup.py",
+		"/home/eristoddle/Dropbox/archives/Evernote Backup Codes",
+		"/home/eristoddle/Desktop/smartgithg-4_6_2/bin/smartgithg.sh",
+		"/home/eristoddle/Dropbox/xampp/htdocs/warCardGame.txt",
+		"/home/eristoddle/Dropbox/xampp/htdocs/penton/htdocs/awstats/awstats/cron/responseReport.php",
+		"/home/eristoddle/Downloads/poker_game.php",
+		"/home/eristoddle/Downloads/recipe-440622-1.py",
+		"/home/eristoddle/Downloads/card_deck.php",
+		"/home/eristoddle/Dropbox/xampp/htdocs/results.txt",
+		"/home/eristoddle/Downloads/saboteur_game.php",
+		"/home/eristoddle/Downloads/logs/results.txt",
+		"/home/eristoddle/Downloads/logs/log_prep.py",
+		"/home/eristoddle/Dropbox/xampp/htdocs/penton/htdocs/awstats/etc/templates/runall.sh.template",
+		"/tmp/fz3temp-1/runall.sh",
+		"/home/eristoddle/Dropbox/Data/Apatar/application.sh",
+		"/home/eristoddle/Downloads/PKG_VALUE_GUIDE_DAO_body_orig.sql",
+		"/home/eristoddle/Downloads/vpnsetup.sh",
+		"/home/eristoddle/Downloads/pkg_value_guide_dao_4.3.0.sql",
+		"/home/eristoddle/Downloads/pkg-vg-dao-six-step-performance-test.sql",
+		"/home/eristoddle/Downloads/logs/Penton_AprMayJune_Api_ResponseTime.txt",
+		"/home/eristoddle/Downloads/logs/all/parse_logs.py",
+		"/home/eristoddle/Downloads/logs/all/remove_old_columns.py",
+		"/home/eristoddle/Downloads/logs/cleanup.py",
+		"/home/eristoddle/Downloads/Penton_AprMayJune_Api_ResponseTime.txt",
+		"/home/eristoddle/Downloads/parse_logs.php",
+		"/home/eristoddle/Downloads/consolidated.csv",
+		"/home/eristoddle/Downloads/parse_logs.py",
+		"/home/eristoddle/Downloads/pkg_value_guide_dao-TRUNK.sql"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"evernote",
+			"evernot",
+			"memcach",
+			"rankCard",
+			"queen of di",
+			"addCard",
+			"autopublish_p",
+			"autopublish",
+			"years",
+			"== ",
+			"]\"",
+			"\"[",
+			"outlier_filtered_counts",
+			"year_table",
+			"mdl_rs_count_subquery",
+			"calculate_v",
+			"resale_model_count",
+			"calculate_values",
+			"outlier_filtered_counts",
+			"apply_out",
+			"outlie",
+			"resale_model_d",
+			"resal_model_d"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"rankFace",
+			"winCard",
+			"]",
+			"["
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 33.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"replace":
+	{
+		"height": 64.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 254.0,
+	"status_bar_visible": true
+}
