@@ -16,6 +16,10 @@
 			'../app/controllers/',
 			'../app/models/'
 		))->register();
+
+		//Initialize our application
+		$application = new \Phalcon\Mvc\Application($di);
+		echo $application->handle()->getContent();
 	} catch(\Phalcon\Exception $e) {
 		echo "PhalconException: ", $e->getMessage();
 	}
