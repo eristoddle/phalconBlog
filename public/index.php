@@ -6,19 +6,19 @@
 		//Load ini file
 		$config = new \Phalcon\Config\Adapter\Ini('../app/config/application.ini');
     	$di->set('config', $config);
-    	
+
 		//Set up our views
 		$di->set(’view’, function(){
 			$view = new \Phalcon\Mvc\View();
-			$view->setViewsDir(’../app/views/’);
+			$view->setViewsDir($this->config->viewsDir);
 			return $view;
 		});
 
 		//Our autoloaders
 		$loader = new \Phalcon\Loader();
 		$loader->registerDirs(array(
-			'../app/controllers/',
-			'../app/models/'
+			$this->config->controllersDir,
+			$this->config->modelsDir
 		))->register();
 
 		//Initialize our application
