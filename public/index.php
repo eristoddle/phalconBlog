@@ -1,12 +1,5 @@
 <?php
 	try {
-		//Our autoloaders
-		$loader = new \Phalcon\Loader();
-		$loader->registerDirs(array(
-			'../app/controllers/',
-			'../app/models/'
-		))->register();
-
 		//Create a DI
 		$di = new Phalcon\DI\FactoryDefault();
 
@@ -16,11 +9,6 @@
 			$view->setViewsDir(’../app/views/’);
 			return $view;
 		});
-
-		
-		//Initialize our application
-		$application = new \Phalcon\Mvc\Application($di);
-		echo $application->handle()->getContent();
 	} catch(\Phalcon\Exception $e) {
 		echo "PhalconException: ", $e->getMessage();
 	}
