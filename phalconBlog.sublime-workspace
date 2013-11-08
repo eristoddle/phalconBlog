@@ -35,7 +35,15 @@
 			"file": "public/index.php",
 			"settings":
 			{
-				"buffer_size": 112,
+				"buffer_size": 752,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "config/config.ini",
+			"settings":
+			{
+				"buffer_size": 104,
 				"line_ending": "Unix"
 			}
 		}
@@ -64,6 +72,7 @@
 	},
 	"file_history":
 	[
+		"/home/eristoddle/Dropbox/xampp/htdocs/phalconBlog/config/config.ini",
 		"/home/eristoddle/Dropbox/xampp/htdocs/phalconBlog/.git-ignore",
 		"/home/eristoddle/Dropbox/xampp/htdocs/phalconBlog/public/index.pph",
 		"/home/eristoddle/Dropbox/xampp/htdocs/phalconBlog/public/.htaccess",
@@ -186,20 +195,46 @@
 					"file": "public/index.php",
 					"settings":
 					{
-						"buffer_size": 112,
+						"buffer_size": 752,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								112,
-								112
+								752,
+								752
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "config/config.ini",
+					"settings":
+					{
+						"buffer_size": 104,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
