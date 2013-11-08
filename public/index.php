@@ -10,15 +10,15 @@
 		//Set up our views
 		$di->set(’view’, function(){
 			$view = new \Phalcon\Mvc\View();
-			$view->setViewsDir($this->config->viewsDir);
+			$view->setViewsDir($this->config->phalcon->viewsDir);
 			return $view;
 		});
 
 		//Our autoloaders
 		$loader = new \Phalcon\Loader();
 		$loader->registerDirs(array(
-			$this->config->controllersDir,
-			$this->config->modelsDir
+			$this->config->phalcon->controllersDir,
+			$this->config->phalcon->modelsDir
 		))->register();
 
 		//Initialize our application
