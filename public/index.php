@@ -8,7 +8,7 @@
     	$di->set('config', $config);
 
 		//Set up our views
-		$di->set(’view’, function(){
+		$di->set('view', function(){
 			$view = new \Phalcon\Mvc\View();
 			$view->setViewsDir($config->phalcon->viewsDir);
 			return $view;
