@@ -4,7 +4,7 @@
 		$di = new Phalcon\DI\FactoryDefault();
 
 		//Load ini file
-		$config = new \Phalcon\Config\Adapter\Ini('../app/config/application.ini');
+		$config = new \Phalcon\Config\Adapter\Ini('../app/config/config.ini');
     	$di->set('config', $config);
 
 		//Set up our views
