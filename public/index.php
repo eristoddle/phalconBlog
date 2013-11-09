@@ -17,8 +17,8 @@
 		//Our autoloaders
 		$loader = new \Phalcon\Loader();
 		$loader->registerDirs(array(
-			__DIR__ .$config->phalcon->controllersDir,
-			__DIR__ .$config->phalcon->modelsDir
+			__DIR__.$config->phalcon->controllersDir,
+			__DIR__.$config->phalcon->modelsDir
 		))->register();
 
 		//Initialize our application
