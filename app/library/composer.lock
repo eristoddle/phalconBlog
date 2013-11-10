@@ -1,0 +1,66 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
+    ],
+    "hash": "22f06eeff429dcef22a1dd32dc6ae12b",
+    "packages": [
+        {
+            "name": "phalcon/devtools",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phalcon/phalcon-devtools.git",
+                "reference": "7280f2c4f56080744014b7bf36351a5ab83a9f7d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/phalcon/phalcon-devtools/zipball/7280f2c4f56080744014b7bf36351a5ab83a9f7d",
+                "reference": "7280f2c4f56080744014b7bf36351a5ab83a9f7d",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.6"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Phalcon": "scripts/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3"
+            ],
+            "authors": [
+                {
+                    "name": "Phalcon Team",
+                    "email": "team@phalconphp.com"
+                }
+            ],
+            "description": "This tools provide you useful scripts to generate code helping to develop faster and easy applications that use with Phalcon framework.",
+            "homepage": "http://phalconphp.com",
+            "keywords": [
+                "framework",
+                "phalcon"
+            ],
+            "time": "2013-11-08 18:48:10"
+        }
+    ],
+    "packages-dev": [
+
+    ],
+    "aliases": [
+
+    ],
+    "minimum-stability": "stable",
+    "stability-flags": {
+        "phalcon/devtools": 20
+    },
+    "platform": [
+
+    ],
+    "platform-dev": [
+
+    ]
+}
