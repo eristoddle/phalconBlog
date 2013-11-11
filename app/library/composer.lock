@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "22f06eeff429dcef22a1dd32dc6ae12b",
+    "hash": "d69274fc3f4781f6fc5a0160c0097136",
     "packages": [
         {
             "name": "phalcon/devtools",
