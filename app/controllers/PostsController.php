@@ -81,14 +81,14 @@ class PostsController extends ControllerBase
 
             $this->view->id = $post->id;
 
-            $this->tag->setDefault("id", $post->getId());
-            $this->tag->setDefault("title", $post->getTitle());
-            $this->tag->setDefault("body", $post->getBody());
-            $this->tag->setDefault("excerpt", $post->getExcerpt());
-            $this->tag->setDefault("published", $post->getPublished());
-            $this->tag->setDefault("updated", $post->getUpdated());
-            $this->tag->setDefault("pinged", $post->getPinged());
-            $this->tag->setDefault("to_ping", $post->getToPing());
+            $this->tag->setDefault("id", $post->id);
+            $this->tag->setDefault("title", $post->title);
+            $this->tag->setDefault("body", $post->body);
+            $this->tag->setDefault("excerpt", $post->excerpt);
+            $this->tag->setDefault("published", $post->published);
+            $this->tag->setDefault("updated", $post->updated);
+            $this->tag->setDefault("pinged", $post->pinged);
+            $this->tag->setDefault("to_ping", $post->to_ping);
             
         }
     }
@@ -108,14 +108,14 @@ class PostsController extends ControllerBase
 
         $post = new Posts();
 
-        $post->setId($this->request->getPost("id"));
-        $post->setTitle($this->request->getPost("title"));
-        $post->setBody($this->request->getPost("body"));
-        $post->setExcerpt($this->request->getPost("excerpt"));
-        $post->setPublished($this->request->getPost("published"));
-        $post->setUpdated($this->request->getPost("updated"));
-        $post->setPinged($this->request->getPost("pinged"));
-        $post->setToPing($this->request->getPost("to_ping"));
+        $post->id = $this->request->getPost("id");
+        $post->title = $this->request->getPost("title");
+        $post->body = $this->request->getPost("body");
+        $post->excerpt = $this->request->getPost("excerpt");
+        $post->published = $this->request->getPost("published");
+        $post->updated = $this->request->getPost("updated");
+        $post->pinged = $this->request->getPost("pinged");
+        $post->to_ping = $this->request->getPost("to_ping");
         
 
         if (!$post->save()) {
@@ -161,14 +161,14 @@ class PostsController extends ControllerBase
             ));
         }
 
-        $post->setId($this->request->getPost("id"));
-        $post->setTitle($this->request->getPost("title"));
-        $post->setBody($this->request->getPost("body"));
-        $post->setExcerpt($this->request->getPost("excerpt"));
-        $post->setPublished($this->request->getPost("published"));
-        $post->setUpdated($this->request->getPost("updated"));
-        $post->setPinged($this->request->getPost("pinged"));
-        $post->setToPing($this->request->getPost("to_ping"));
+        $post->id = $this->request->getPost("id");
+        $post->title = $this->request->getPost("title");
+        $post->body = $this->request->getPost("body");
+        $post->excerpt = $this->request->getPost("excerpt");
+        $post->published = $this->request->getPost("published");
+        $post->updated = $this->request->getPost("updated");
+        $post->pinged = $this->request->getPost("pinged");
+        $post->to_ping = $this->request->getPost("to_ping");
         
 
         if (!$post->save()) {
