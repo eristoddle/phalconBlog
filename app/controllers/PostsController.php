@@ -12,6 +12,20 @@ class PostsController extends ControllerBase
     public function indexAction()
     {
         $this->persistent->parameters = null;
+
+        $numberPage = 1;
+
+        $posts = Posts::query()
+            ->order("published")
+            ->execute();
+
+        $paginator = new Paginator(array(
+            "data" => $posts,
+            "limit"=> 10,
+            "page" => $numberPage
+        ));
+
+        $this->view->page = $paginator->getPaginate();
     }
 
     /**
