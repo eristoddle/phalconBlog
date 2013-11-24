@@ -242,4 +242,28 @@ class PostsController extends ControllerBase
         ));
     }
 
+    /**
+     * Shows a post
+     *
+     * @param string $id
+     */
+    public function showAction($id)
+    {
+
+        if (!$this->request->isPost()) {
+
+            $post = Posts::findFirstByid($id);
+            if (!$post) {
+                $this->flash->error("post was not found");
+                return $this->dispatcher->forward(array(
+                        "controller" => "posts",
+                        "action" => "index"
+                    ));
+            }
+
+        }
+
+        $this->view->setVar("post", $post);
+    }
+
 }

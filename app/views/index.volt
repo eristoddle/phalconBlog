@@ -14,33 +14,32 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </a>
-                    <a href="/" class="brand">Phalcon Blog</a>
+                    <a href="/phalconBlog" class="brand">Phalcon Blog</a>
                     <div class="nav-collapse">
                         <ul class="nav">
-                            <li class="active"><a href="/phalconBlog/webtools.php?_url=/index">Home</a></li>
-                            <li><a href="/phalconBlog/webtools.php?_url=/controllers">Controllers</a></li>
-                            <li><a href="/phalconBlog/webtools.php?_url=/models">Models</a></li>
-                            <li><a href="/phalconBlog/webtools.php?_url=/scaffold">Scaffold</a></li>
-                            <li><a href="/phalconBlog/webtools.php?_url=/migrations">Migrations</a></li>
+                            <li>{{ link_to("posts/", "Posts") }}</li>
+                            <li>{{ link_to("posts/search", "Advanced Search") }}</li>
+                            <li>{{ link_to("posts/new", "Create posts") }}</li>
+                            <li><a href="/phalconBlog/webtools.php?_url=/index">Webtools</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="container-fluid">
+        <div id="content" class="container-fluid">
             <div class="row-fluid">
-                <div class="span2">
+                <div class="span3">
                     <div class="well">
+                        {{ form("posts/search", "method":"post", "autocomplete" : "off", "class" : "form-inline") }}
+                            <div class="input-append">
+                                {{ text_field("body", "type" : "date", "class" : "input-medium") }}
+                                {{ submit_button("Search", "class" : "btn") }}
+                            </div>
+                       </form>
                         <ul class="nav nav-list">
-                            <li class="active">
-                                {{ form("posts/search", "method":"post", "autocomplete" : "off") }}
-                                <label for="body">Body</label>
-                                {{ text_field("body", "type" : "date") }}
-                                {{ submit_button("Search") }}
-                               </form>
+                            <li>
+                                Sidebar Link
                            </li>
-                            <li>Recent Posts</li>
-                            <li>Tags</li>
                         </ul>
                     </div>
                 </div>

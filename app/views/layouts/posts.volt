@@ -1,3 +1,3 @@
-<div align="center">
+<div>
     {{ content() }}
 </div>
