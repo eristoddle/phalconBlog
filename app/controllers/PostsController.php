@@ -11,7 +11,10 @@ class PostsController extends ControllerBase
      */
     public function indexAction()
     {
-        $this->persistent->parameters = null;
+        $parameters = $this->persistent->parameters;
+        if (!is_array($parameters)) {
+            $parameters = array();
+        }
 
         $numberPage = 1;
 
