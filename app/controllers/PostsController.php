@@ -263,7 +263,7 @@ class PostsController extends ControllerBase
 
         }
 
-        $this->view->setVar("post", $post);
+        $this->view->post = $post;
     }
 
 }

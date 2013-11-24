@@ -69,3 +69,12 @@ $di->set('session', function() {
 	$session->start();
 	return $session;
 });
+
+//Register the flash service with custom CSS classes
+$di->set('flash', function(){
+    return new \Phalcon\Flash\Direct(array(
+        'error' => 'alert alert-error',
+        'success' => 'alert alert-success',
+        'notice' => 'alert alert-info',
+    ));
+});

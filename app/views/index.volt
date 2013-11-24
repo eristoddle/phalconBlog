@@ -36,11 +36,6 @@
                                 {{ submit_button("Search", "class" : "btn") }}
                             </div>
                        </form>
-                        <ul class="nav nav-list">
-                            <li>
-                                Sidebar Link
-                           </li>
-                        </ul>
                     </div>
                 </div>
             <div class="span9 well">
