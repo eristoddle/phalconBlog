@@ -12,7 +12,7 @@
             <label for="title">Title</label>
         </td>
         <td align="left">
-                {{ text_field("title", "type" : "date") }}
+                {{ text_field("title") }}
         </td>
     </tr>
     <tr>
@@ -20,7 +20,7 @@
             <label for="body">Body</label>
         </td>
         <td align="left">
-                {{ text_area("body", "type" : "date") }}
+                {{ text_area("body") }}
         </td>
     </tr>
     <tr>
@@ -28,7 +28,7 @@
             <label for="excerpt">Excerpt</label>
         </td>
         <td align="left">
-                {{ text_area("excerpt", "type" : "date") }}
+                {{ text_area("excerpt") }}
         </td>
     </tr>
     <tr>

@@ -19,7 +19,7 @@
             <label for="title">Title</label>
         </td>
         <td align="left">
-                {{ text_field("title", "type" : "date") }}
+                {{ text_field("title") }}
         </td>
     </tr>
     <tr>
@@ -27,7 +27,7 @@
             <label for="body">Body</label>
         </td>
         <td align="left">
-                {{ text_field("body", "type" : "date") }}
+                {{ text_field("body") }}
         </td>
     </tr>
     <tr>
@@ -35,7 +35,7 @@
             <label for="excerpt">Excerpt</label>
         </td>
         <td align="left">
-                {{ text_field("excerpt", "type" : "date") }}
+                {{ text_field("excerpt") }}
         </td>
     </tr>
     <tr>
@@ -59,7 +59,7 @@
             <label for="pinged">Pinged</label>
         </td>
         <td align="left">
-                {{ text_field("pinged", "type" : "date") }}
+                {{ text_field("pinged") }}
         </td>
     </tr>
     <tr>
@@ -67,7 +67,7 @@
             <label for="to_ping">To Of Ping</label>
         </td>
         <td align="left">
-                {{ text_field("to_ping", "type" : "date") }}
+                {{ text_field("to_ping") }}
         </td>
     </tr>
 

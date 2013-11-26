@@ -11,12 +11,7 @@ class PostsController extends ControllerBase
      */
     public function indexAction()
     {
-        $parameters = $this->persistent->parameters;
-        if (!is_array($parameters)) {
-            $parameters = array();
-        }
-
-        $numberPage = 1;
+        $numberPage = $this->request->getQuery("page", "int", 1);
 
         $posts = Posts::query()
             ->order("published")
