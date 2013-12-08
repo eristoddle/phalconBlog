@@ -4,22 +4,46 @@ use Phalcon\Mvc\Model\Criteria,
     Phalcon\Mvc\Model\Validator\Email as Email,
     Phalcon\Paginator\Adapter\Model as Paginator;
 
-class UsersController extends ControllerBase
-{
+class UsersController extends ControllerBase {
 
     /**
      * Index action
      */
-    public function indexAction()
-    {
+    public function indexAction() {
         $this->persistent->parameters = null;
+    }
+
+    /**
+     * Login action
+     */
+    public function loginAction() {
+
+        if ($this->request->isPost()) {
+            $query = Criteria::fromInput($this->di, "Users", $_POST);
+            $this->persistent->parameters = $query->getParams();
+            $parameters = $this->persistent->parameters;
+            if (!is_array($parameters)) {
+                $parameters = array();
+            }
+            $users = Users::find($parameters);
+            if (count($users) == 1) {
+                $user = $users->getFirst();
+                $this->session->set("user", $user);
+                $this->flash->success("Welcome " . $user->name);
+            }else{
+                $this->flash->error("Username and Password combination not found");
+            }
+        }
+        return $this->dispatcher->forward(array(
+                "controller" => "posts",
+                "action" => "index"
+            ));
     }
 
     /**
      * Searches for users
      */
-    public function searchAction()
-    {
+    public function searchAction() {
 
         $numberPage = 1;
         if ($this->request->isPost()) {
@@ -38,15 +62,17 @@ class UsersController extends ControllerBase
         $users = Users::find($parameters);
         if (count($users) == 0) {
             $this->flash->notice("The search did not find any users");
-            return $this->dispatcher->forward(array(
-                "controller" => "users",
-                "action" => "index"
-            ));
+            return $this->dispatcher->forward(
+                array(
+                    "controller" => "users",
+                    "action" => "index"
+                )
+            );
         }
 
         $paginator = new Paginator(array(
             "data" => $users,
-            "limit"=> 10,
+            "limit" => 10,
             "page" => $numberPage
         ));
 
@@ -56,8 +82,7 @@ class UsersController extends ControllerBase
     /**
      * Displayes the creation form
      */
-    public function newAction()
-    {
+    public function newAction() {
 
     }
 
@@ -66,18 +91,19 @@ class UsersController extends ControllerBase
      *
      * @param string $id
      */
-    public function editAction($id)
-    {
+    public function editAction($id) {
 
         if (!$this->request->isPost()) {
 
             $user = Users::findFirstByid($id);
             if (!$user) {
                 $this->flash->error("user was not found");
-                return $this->dispatcher->forward(array(
-                    "controller" => "users",
-                    "action" => "index"
-                ));
+                return $this->dispatcher->forward(
+                    array(
+                        "controller" => "users",
+                        "action" => "index"
+                    )
+                );
             }
 
             $this->view->id = $user->id;
@@ -87,21 +113,22 @@ class UsersController extends ControllerBase
             $this->tag->setDefault("password", $user->password);
             $this->tag->setDefault("name", $user->name);
             $this->tag->setDefault("email", $user->email);
-            
+
         }
     }
 
     /**
      * Creates a new user
      */
-    public function createAction()
-    {
+    public function createAction() {
 
         if (!$this->request->isPost()) {
-            return $this->dispatcher->forward(array(
-                "controller" => "users",
-                "action" => "index"
-            ));
+            return $this->dispatcher->forward(
+                array(
+                    "controller" => "users",
+                    "action" => "index"
+                )
+            );
         }
 
         $user = new Users();
@@ -111,23 +138,27 @@ class UsersController extends ControllerBase
         $user->password = $this->request->getPost("password");
         $user->name = $this->request->getPost("name");
         $user->email = $this->request->getPost("email", "email");
-        
+
 
         if (!$user->save()) {
             foreach ($user->getMessages() as $message) {
                 $this->flash->error($message);
             }
-            return $this->dispatcher->forward(array(
-                "controller" => "users",
-                "action" => "new"
-            ));
+            return $this->dispatcher->forward(
+                array(
+                    "controller" => "users",
+                    "action" => "new"
+                )
+            );
         }
 
         $this->flash->success("user was created successfully");
-        return $this->dispatcher->forward(array(
-            "controller" => "users",
-            "action" => "index"
-        ));
+        return $this->dispatcher->forward(
+            array(
+                "controller" => "users",
+                "action" => "index"
+            )
+        );
 
     }
 
@@ -135,14 +166,15 @@ class UsersController extends ControllerBase
      * Saves a user edited
      *
      */
-    public function saveAction()
-    {
+    public function saveAction() {
 
         if (!$this->request->isPost()) {
-            return $this->dispatcher->forward(array(
-                "controller" => "users",
-                "action" => "index"
-            ));
+            return $this->dispatcher->forward(
+                array(
+                    "controller" => "users",
+                    "action" => "index"
+                )
+            );
         }
 
         $id = $this->request->getPost("id");
@@ -150,10 +182,12 @@ class UsersController extends ControllerBase
         $user = Users::findFirstByid($id);
         if (!$user) {
             $this->flash->error("user does not exist " . $id);
-            return $this->dispatcher->forward(array(
-                "controller" => "users",
-                "action" => "index"
-            ));
+            return $this->dispatcher->forward(
+                array(
+                    "controller" => "users",
+                    "action" => "index"
+                )
+            );
         }
 
         $user->id = $this->request->getPost("id");
@@ -161,7 +195,7 @@ class UsersController extends ControllerBase
         $user->password = $this->request->getPost("password");
         $user->name = $this->request->getPost("name");
         $user->email = $this->request->getPost("email", "email");
-        
+
 
         if (!$user->save()) {
 
@@ -169,18 +203,22 @@ class UsersController extends ControllerBase
                 $this->flash->error($message);
             }
 
-            return $this->dispatcher->forward(array(
-                "controller" => "users",
-                "action" => "edit",
-                "params" => array($user->id)
-            ));
+            return $this->dispatcher->forward(
+                array(
+                    "controller" => "users",
+                    "action" => "edit",
+                    "params" => array($user->id)
+                )
+            );
         }
 
         $this->flash->success("user was updated successfully");
-        return $this->dispatcher->forward(array(
-            "controller" => "users",
-            "action" => "index"
-        ));
+        return $this->dispatcher->forward(
+            array(
+                "controller" => "users",
+                "action" => "index"
+            )
+        );
 
     }
 
@@ -189,35 +227,40 @@ class UsersController extends ControllerBase
      *
      * @param string $id
      */
-    public function deleteAction($id)
-    {
+    public function deleteAction($id) {
 
         $user = Users::findFirstByid($id);
         if (!$user) {
             $this->flash->error("user was not found");
-            return $this->dispatcher->forward(array(
-                "controller" => "users",
-                "action" => "index"
-            ));
+            return $this->dispatcher->forward(
+                array(
+                    "controller" => "users",
+                    "action" => "index"
+                )
+            );
         }
 
         if (!$user->delete()) {
 
-            foreach ($user->getMessages() as $message){
+            foreach ($user->getMessages() as $message) {
                 $this->flash->error($message);
             }
 
-            return $this->dispatcher->forward(array(
-                "controller" => "users",
-                "action" => "search"
-            ));
+            return $this->dispatcher->forward(
+                array(
+                    "controller" => "users",
+                    "action" => "search"
+                )
+            );
         }
 
         $this->flash->success("user was deleted successfully");
-        return $this->dispatcher->forward(array(
-            "controller" => "users",
-            "action" => "index"
-        ));
+        return $this->dispatcher->forward(
+            array(
+                "controller" => "users",
+                "action" => "index"
+            )
+        );
     }
 
 }
