@@ -1,3 +1,4 @@
+{{ form("users/edit", "method":"post") }}
 
 {{ content() }}
 
