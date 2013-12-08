@@ -1,15 +1,6 @@
 
 {{ content() }}
 
-{{ submit_button("Save") }}
-
-<table width="100%">
-    <tr>
-        <td align="left">{{ link_to("users", "Go Back") }}</td>
-        <td align="right">{{ submit_button("Save") }}</td>
-    <tr>
-</table>
-
 <div align="center">
     <h1>Edit users</h1>
 </div>
@@ -28,7 +19,7 @@
             <label for="password">Password</label>
         </td>
         <td align="left">
-            {{ password_field("password", "size" : 30) }}
+            {{ text_field("password", "size" : 30) }}
         </td>
     </tr>
     <tr>
@@ -50,7 +41,7 @@
 
     <tr>
         <td>{{ hidden_field("id") }}</td>
-        <td>{{ submit_button("Search") }}</td>
+        <td>{{ submit_button("Save", "class" : "btn") }}</td>
     </tr>
 </table>
 

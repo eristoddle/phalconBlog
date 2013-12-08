@@ -26,7 +26,7 @@
     </tr>
     <tr>
         <td></td>
-        <td>{{ submit_button("Login") }}</td>
+        <td>{{ submit_button("Login", "class" : "btn") }}</td>
     </tr>
 </table>
 

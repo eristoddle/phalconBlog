@@ -1,17 +1,6 @@
 
 {{ content() }}
 
-<table width="100%">
-    <tr>
-        <td align="left">
-            {{ link_to("users/index", "Go Back") }}
-        </td>
-        <td align="right">
-            {{ link_to("users/new", "Create ") }}
-        </td>
-    <tr>
-</table>
-
 <table class="browse" align="center">
     <thead>
         <tr>

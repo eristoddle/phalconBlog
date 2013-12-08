@@ -1,13 +1,6 @@
 
 {{ form("users/create", "method":"post") }}
 
-<table width="100%">
-    <tr>
-        <td align="left">{{ link_to("users", "Go Back") }}</td>
-        <td align="right">{{ submit_button("Save") }}</td>
-    <tr>
-</table>
-
 {{ content() }}
 
 <div align="center">
@@ -50,7 +43,7 @@
 
     <tr>
         <td></td>
-        <td>{{ submit_button("Search") }}</td>
+        <td>{{ submit_button("Save", "class" : "btn") }}</td>
     </tr>
 </table>
 
