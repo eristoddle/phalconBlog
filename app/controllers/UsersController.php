@@ -1,6 +1,7 @@
 <?php
 
 use Phalcon\Mvc\Model\Criteria,
+    Phalcon\Mvc\Model\Validator\Email as Email,
     Phalcon\Paginator\Adapter\Model as Paginator;
 
 class UsersController extends ControllerBase
