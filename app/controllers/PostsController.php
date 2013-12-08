@@ -3,14 +3,12 @@
 use Phalcon\Mvc\Model\Criteria,
     Phalcon\Paginator\Adapter\Model as Paginator;
 
-class PostsController extends ControllerBase
-{
+class PostsController extends ControllerBase {
 
     /**
      * Index action
      */
-    public function indexAction()
-    {
+    public function indexAction() {
         $numberPage = $this->request->getQuery("page", "int", 1);
 
         $posts = Posts::query()
@@ -19,7 +17,7 @@ class PostsController extends ControllerBase
 
         $paginator = new Paginator(array(
             "data" => $posts,
-            "limit"=> 10,
+            "limit" => 10,
             "page" => $numberPage
         ));
 
@@ -29,8 +27,7 @@ class PostsController extends ControllerBase
     /**
      * Searches for posts
      */
-    public function searchAction()
-    {
+    public function searchAction() {
 
         $numberPage = 1;
         if ($this->request->isPost()) {
@@ -49,15 +46,17 @@ class PostsController extends ControllerBase
         $posts = Posts::find($parameters);
         if (count($posts) == 0) {
             $this->flash->notice("The search did not find any posts");
-            return $this->dispatcher->forward(array(
-                "controller" => "posts",
-                "action" => "index"
-            ));
+            return $this->dispatcher->forward(
+                array(
+                    "controller" => "posts",
+                    "action" => "index"
+                )
+            );
         }
 
         $paginator = new Paginator(array(
             "data" => $posts,
-            "limit"=> 10,
+            "limit" => 10,
             "page" => $numberPage
         ));
 
@@ -67,8 +66,7 @@ class PostsController extends ControllerBase
     /**
      * Displayes the creation form
      */
-    public function newAction()
-    {
+    public function newAction() {
 
     }
 
@@ -77,18 +75,19 @@ class PostsController extends ControllerBase
      *
      * @param string $id
      */
-    public function editAction($id)
-    {
+    public function editAction($id) {
 
         if (!$this->request->isPost()) {
 
             $post = Posts::findFirstByid($id);
             if (!$post) {
                 $this->flash->error("post was not found");
-                return $this->dispatcher->forward(array(
-                    "controller" => "posts",
-                    "action" => "index"
-                ));
+                return $this->dispatcher->forward(
+                    array(
+                        "controller" => "posts",
+                        "action" => "index"
+                    )
+                );
             }
 
             $this->view->id = $post->id;
@@ -101,21 +100,32 @@ class PostsController extends ControllerBase
             $this->tag->setDefault("updated", $post->updated);
             $this->tag->setDefault("pinged", $post->pinged);
             $this->tag->setDefault("to_ping", $post->to_ping);
-            
+
         }
     }
 
     /**
      * Creates a new post
      */
-    public function createAction()
-    {
+    public function createAction() {
 
         if (!$this->request->isPost()) {
-            return $this->dispatcher->forward(array(
-                "controller" => "posts",
-                "action" => "index"
-            ));
+            return $this->dispatcher->forward(
+                array(
+                    "controller" => "posts",
+                    "action" => "index"
+                )
+            );
+        }
+
+        if (!$this->session->has("user_id")) {
+            $this->flash->error("Please login to create a post");
+            return $this->dispatcher->forward(
+                array(
+                    "controller" => "users",
+                    "action" => "index"
+                )
+            );
         }
 
         $post = new Posts();
@@ -129,23 +139,27 @@ class PostsController extends ControllerBase
         $post->updated = $this->request->getPost("updated");
         $post->pinged = $this->request->getPost("pinged");
         $post->to_ping = $this->request->getPost("to_ping");
-        
+
 
         if (!$post->save()) {
             foreach ($post->getMessages() as $message) {
                 $this->flash->error($message);
             }
-            return $this->dispatcher->forward(array(
-                "controller" => "posts",
-                "action" => "new"
-            ));
+            return $this->dispatcher->forward(
+                array(
+                    "controller" => "posts",
+                    "action" => "new"
+                )
+            );
         }
 
         $this->flash->success("post was created successfully");
-        return $this->dispatcher->forward(array(
-            "controller" => "posts",
-            "action" => "index"
-        ));
+        return $this->dispatcher->forward(
+            array(
+                "controller" => "posts",
+                "action" => "index"
+            )
+        );
 
     }
 
@@ -153,14 +167,15 @@ class PostsController extends ControllerBase
      * Saves a post edited
      *
      */
-    public function saveAction()
-    {
+    public function saveAction() {
 
         if (!$this->request->isPost()) {
-            return $this->dispatcher->forward(array(
-                "controller" => "posts",
-                "action" => "index"
-            ));
+            return $this->dispatcher->forward(
+                array(
+                    "controller" => "posts",
+                    "action" => "index"
+                )
+            );
         }
 
         $id = $this->request->getPost("id");
@@ -168,10 +183,12 @@ class PostsController extends ControllerBase
         $post = Posts::findFirstByid($id);
         if (!$post) {
             $this->flash->error("post does not exist " . $id);
-            return $this->dispatcher->forward(array(
-                "controller" => "posts",
-                "action" => "index"
-            ));
+            return $this->dispatcher->forward(
+                array(
+                    "controller" => "posts",
+                    "action" => "index"
+                )
+            );
         }
 
         $post->id = $this->request->getPost("id");
@@ -182,7 +199,7 @@ class PostsController extends ControllerBase
         $post->updated = $this->request->getPost("updated");
         $post->pinged = $this->request->getPost("pinged");
         $post->to_ping = $this->request->getPost("to_ping");
-        
+
 
         if (!$post->save()) {
 
@@ -190,18 +207,22 @@ class PostsController extends ControllerBase
                 $this->flash->error($message);
             }
 
-            return $this->dispatcher->forward(array(
-                "controller" => "posts",
-                "action" => "edit",
-                "params" => array($post->id)
-            ));
+            return $this->dispatcher->forward(
+                array(
+                    "controller" => "posts",
+                    "action" => "edit",
+                    "params" => array($post->id)
+                )
+            );
         }
 
         $this->flash->success("post was updated successfully");
-        return $this->dispatcher->forward(array(
-            "controller" => "posts",
-            "action" => "index"
-        ));
+        return $this->dispatcher->forward(
+            array(
+                "controller" => "posts",
+                "action" => "index"
+            )
+        );
 
     }
 
@@ -210,35 +231,40 @@ class PostsController extends ControllerBase
      *
      * @param string $id
      */
-    public function deleteAction($id)
-    {
+    public function deleteAction($id) {
 
         $post = Posts::findFirstByid($id);
         if (!$post) {
             $this->flash->error("post was not found");
-            return $this->dispatcher->forward(array(
-                "controller" => "posts",
-                "action" => "index"
-            ));
+            return $this->dispatcher->forward(
+                array(
+                    "controller" => "posts",
+                    "action" => "index"
+                )
+            );
         }
 
         if (!$post->delete()) {
 
-            foreach ($post->getMessages() as $message){
+            foreach ($post->getMessages() as $message) {
                 $this->flash->error($message);
             }
 
-            return $this->dispatcher->forward(array(
-                "controller" => "posts",
-                "action" => "search"
-            ));
+            return $this->dispatcher->forward(
+                array(
+                    "controller" => "posts",
+                    "action" => "search"
+                )
+            );
         }
 
         $this->flash->success("post was deleted successfully");
-        return $this->dispatcher->forward(array(
-            "controller" => "posts",
-            "action" => "index"
-        ));
+        return $this->dispatcher->forward(
+            array(
+                "controller" => "posts",
+                "action" => "index"
+            )
+        );
     }
 
     /**
@@ -246,18 +272,19 @@ class PostsController extends ControllerBase
      *
      * @param string $id
      */
-    public function showAction($id)
-    {
+    public function showAction($id) {
 
         if (!$this->request->isPost()) {
 
             $post = Posts::findFirstByid($id);
             if (!$post) {
                 $this->flash->error("post was not found");
-                return $this->dispatcher->forward(array(
+                return $this->dispatcher->forward(
+                    array(
                         "controller" => "posts",
                         "action" => "index"
-                    ));
+                    )
+                );
             }
 
         }

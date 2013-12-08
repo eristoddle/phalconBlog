@@ -11,6 +11,14 @@ class UsersController extends ControllerBase {
      */
     public function indexAction() {
         $this->persistent->parameters = null;
+        if ($this->session->has("user_id")) {
+            return $this->dispatcher->forward(
+                array(
+                    "controller" => "users",
+                    "action" => "search"
+                )
+            );
+        }
     }
 
     /**
@@ -30,14 +38,30 @@ class UsersController extends ControllerBase {
                 $user = $users->getFirst();
                 $this->session->set("user_id", $user->id);
                 $this->flash->success("Welcome " . $user->name);
-            }else{
+            } else {
                 $this->flash->error("Username and Password combination not found");
             }
         }
-        return $this->dispatcher->forward(array(
+        return $this->dispatcher->forward(
+            array(
                 "controller" => "posts",
                 "action" => "index"
-            ));
+            )
+        );
+    }
+
+    /**
+     * Logout action
+     */
+    public function logoutAction(){
+        $this->session->remove("user_id");
+        $this->flash->success("You have been logged out");
+        return $this->dispatcher->forward(
+            array(
+                "controller" => "users",
+                "action" => "index"
+            )
+        );
     }
 
     /**

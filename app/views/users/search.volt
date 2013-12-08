@@ -1,6 +1,8 @@
 
 {{ content() }}
 
+{{ link_to("users/logout/", "Logout", "class" : "btn") }}
+
 <table class="browse" align="center">
     <thead>
         <tr>
