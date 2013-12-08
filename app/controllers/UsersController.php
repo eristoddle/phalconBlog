@@ -28,7 +28,7 @@ class UsersController extends ControllerBase {
             $users = Users::find($parameters);
             if (count($users) == 1) {
                 $user = $users->getFirst();
-                $this->session->set("user", $user);
+                $this->session->set("user_id", $user->id);
                 $this->flash->success("Welcome " . $user->name);
             }else{
                 $this->flash->error("Username and Password combination not found");
