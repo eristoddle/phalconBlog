@@ -18,7 +18,9 @@
                     <div class="nav-collapse">
                         <ul class="nav">
                             <li>{{ link_to("posts/", "Posts") }}</li>
+                            <li>{{ link_to("tags/", "Tags") }}</li>
                             <li>{{ link_to("posts/search", "Advanced Search") }}</li>
+                            <li>{{ link_to("users/", "Users") }}</li>
                             <li>{{ link_to("posts/new", "Create posts") }}</li>
                             <li><a href="/phalconBlog/webtools.php?_url=/index" target="_blank">Webtools</a></li>
                         </ul>
