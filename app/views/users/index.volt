@@ -1,33 +1,19 @@
-
 {{ content() }}
 
 {{ form("users/login", "method":"post", "autocomplete" : "off") }}
 
-<div align="center">
-    <h1>Users</h1>
+<h1>Users</h1>
+
+<div>
+    <label for="username">Username</label>
+    {{ text_field("username", "size" : 30) }}
 </div>
 
-<table>
-    <tr>
-        <td align="right">
-            <label for="username">Username</label>
-        </td>
-        <td align="left">
-            {{ text_field("username", "size" : 30) }}
-        </td>
-    </tr>
-    <tr>
-        <td align="right">
-            <label for="password">Password</label>
-        </td>
-        <td align="left">
-            {{ password_field("password", "size" : 30) }}
-        </td>
-    </tr>
-    <tr>
-        <td></td>
-        <td>{{ submit_button("Login", "class" : "btn") }}</td>
-    </tr>
-</table>
+<div>
+    <label for="password">Password</label>
+    {{ password_field("password", "size" : 30) }}
+</div>
+
+{{ submit_button("Login", "class" : "btn") }}
 
 </form>
