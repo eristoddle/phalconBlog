@@ -121,7 +121,7 @@ class PostsController extends ControllerBase
         $post = new Posts();
 
         $post->id = $this->request->getPost("id");
-        $post->users_id = $this->session->get("user")->id;
+        $post->users_id = $this->session->get("user_id");
         $post->title = $this->request->getPost("title");
         $post->body = $this->request->getPost("body");
         $post->excerpt = $this->request->getPost("excerpt");
