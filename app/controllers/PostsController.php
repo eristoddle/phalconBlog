@@ -31,8 +31,6 @@ class PostsController extends ControllerBase {
 
         $numberPage = 1;
         if ($this->request->isPost()) {
-            //$query = Criteria::fromInput($this->di, "Posts", $_POST);
-            //$this->persistent->parameters = $query->getParams();
             $this->persistent->parameters = $this->request->getPost();
         } else {
             $numberPage = $this->request->getQuery("page", "int");
@@ -42,10 +40,8 @@ class PostsController extends ControllerBase {
         if (!is_array($parameters)) {
             $parameters = array();
         }
-        //$parameters["order"] = "id";
         $query = $parameters['body'];
 
-        //$posts = Posts::find($parameters);
         $phql = "SELECT * FROM Posts WHERE body LIKE '%$query%' OR
             excerpt LIKE '%$query%' OR title LIKE '%$query%' ORDER BY id";
         $posts = $this->modelsManager->executeQuery($phql);
