@@ -136,8 +136,10 @@ class PostsController extends ControllerBase {
         $post->title = $this->request->getPost("title");
         $post->body = $this->request->getPost("body");
         $post->excerpt = $this->request->getPost("excerpt");
-        $post->published = $this->request->getPost("published");
-        $post->updated = $this->request->getPost("updated");
+        //$post->published = $this->request->getPost("published");
+        //$post->updated = $this->request->getPost("updated");
+        $post->published = date("Y-m-d H:i:s");
+        $post->updated = date("Y-m-d H:i:s");
         $post->pinged = $this->request->getPost("pinged");
         $post->to_ping = $this->request->getPost("to_ping");
 
@@ -196,8 +198,8 @@ class PostsController extends ControllerBase {
         $post->title = $this->request->getPost("title");
         $post->body = $this->request->getPost("body");
         $post->excerpt = $this->request->getPost("excerpt");
-        $post->published = $this->request->getPost("published");
-        $post->updated = $this->request->getPost("updated");
+        //$post->published = $this->request->getPost("published");
+        $post->updated = date("Y-m-d H:i:s");
         $post->pinged = $this->request->getPost("pinged");
         $post->to_ping = $this->request->getPost("to_ping");
 
