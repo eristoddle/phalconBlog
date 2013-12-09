@@ -1,4 +1,4 @@
-{{ form("users/edit", "method":"post") }}
+{{ form("users/save", "method":"post") }}
 
 {{ content() }}
 
