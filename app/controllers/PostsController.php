@@ -93,10 +93,16 @@ class PostsController extends ControllerBase {
 
             $this->view->id = $post->id;
 
+            $tagArray = array();
+            foreach($post->postTags as $postTag){
+                $tagArray[] = $postTag->tags->tag;
+            }
+
             $this->tag->setDefault("id", $post->id);
             $this->tag->setDefault("title", $post->title);
             $this->tag->setDefault("body", $post->body);
             $this->tag->setDefault("excerpt", $post->excerpt);
+            $this->tag->setDefault("tags", implode(",", $tagArray));
             $this->tag->setDefault("published", $post->published);
             $this->tag->setDefault("updated", $post->updated);
             $this->tag->setDefault("pinged", $post->pinged);
@@ -130,8 +136,10 @@ class PostsController extends ControllerBase {
         }
 
         $post = new Posts();
+        $postTags = array();
 
         $post->id = $this->request->getPost("id");
+        $post->tags = $postTags;
         $post->users_id = $this->session->get("user_id");
         $post->title = $this->request->getPost("title");
         $post->body = $this->request->getPost("body");
@@ -141,8 +149,20 @@ class PostsController extends ControllerBase {
         $post->pinged = $this->request->getPost("pinged");
         $post->to_ping = $this->request->getPost("to_ping");
 
+        $success = $post->save();
 
-        if (!$post->save()) {
+        $rawTags = explode(",",$this->request->getPost("tags", array("trim", "lower")));
+        foreach ($rawTags as $t){
+            $tag = new Tags();
+            $tag->tag = $t;
+            $tag->save();
+            $postTag = new PostTags();
+            $postTag->posts_id = $post->id;
+            $postTag->tags_id = $tag->id;
+            $postTag->save();
+        }
+
+        if (!$success) {
             foreach ($post->getMessages() as $message) {
                 $this->flash->error($message);
             }
@@ -200,8 +220,20 @@ class PostsController extends ControllerBase {
         $post->pinged = $this->request->getPost("pinged");
         $post->to_ping = $this->request->getPost("to_ping");
 
+        $success = $post->save();
 
-        if (!$post->save()) {
+        $rawTags = explode(",",$this->request->getPost("tags", array("trim", "lower")));
+        foreach ($rawTags as $t){
+            $tag = new Tags();
+            $tag->tag = $t;
+            $tag->save();
+            $postTag = new PostTags();
+            $postTag->posts_id = $post->id;
+            $postTag->tags_id = $tag->id;
+            $postTag->save();
+        }
+
+        if (!$success) {
 
             foreach ($post->getMessages() as $message) {
                 $this->flash->error($message);

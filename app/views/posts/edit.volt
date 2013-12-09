@@ -32,6 +32,14 @@
         </td>
     </tr>
     <tr>
+        <td align="right">
+            <label for="tags">Tags</label>
+        </td>
+        <td align="left">
+                {{ text_field("tags") }}
+        </td>
+    </tr>
+    <tr>
         <td>{{ hidden_field("id") }}</td>
         <td>{{ submit_button("Save", "class" : "btn") }}</td>
     </tr>
