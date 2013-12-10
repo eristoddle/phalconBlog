@@ -2,49 +2,47 @@
 
 use Phalcon\Mvc\Model\Validator\Email as Email;
 
-class Users extends \Phalcon\Mvc\Model
-{
+class Users extends \Phalcon\Mvc\Model {
 
     /**
      *
      * @var integer
      */
     public $id;
-     
+
     /**
      *
      * @var string
      */
     public $username;
-     
+
     /**
      *
      * @var string
      */
     public $password;
-     
+
     /**
      *
      * @var string
      */
     public $name;
-     
+
     /**
      *
      * @var string
      */
     public $email;
-     
+
     /**
      * Validations and business logic
      */
-    public function validation()
-    {
+    public function validation() {
 
         $this->validate(
             new Email(
                 array(
-                    "field"    => "email",
+                    "field" => "email",
                     "required" => true,
                 )
             )
@@ -57,9 +55,8 @@ class Users extends \Phalcon\Mvc\Model
     /**
      * Initialize method for model.
      */
-    public function initialize()
-    {
-		$this->hasMany("id", "Posts", "users_id", NULL);
+    public function initialize() {
+        $this->hasMany("id", "Posts", "users_id", NULL);
 
     }
 

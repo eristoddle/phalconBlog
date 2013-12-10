@@ -53,7 +53,7 @@ class UsersController extends ControllerBase {
     /**
      * Logout action
      */
-    public function logoutAction(){
+    public function logoutAction() {
         $this->session->remove("user_id");
         $this->flash->success("You have been logged out");
         return $this->dispatcher->forward(

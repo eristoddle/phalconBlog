@@ -94,7 +94,7 @@ class PostsController extends ControllerBase {
             $this->view->id = $post->id;
 
             $tagArray = array();
-            foreach($post->postTags as $postTag){
+            foreach ($post->postTags as $postTag) {
                 $tagArray[] = $postTag->tags->tag;
             }
 
@@ -151,8 +151,8 @@ class PostsController extends ControllerBase {
 
         $success = $post->save();
 
-        $tags = explode(",",$this->request->getPost("tags", array("trim", "lower")));
-        Posts::addTags($tags,$post->id);
+        $tags = explode(",", $this->request->getPost("tags", array("trim", "lower")));
+        Posts::addTags($tags, $post->id);
 
         if (!$success) {
             foreach ($post->getMessages() as $message) {
@@ -214,8 +214,8 @@ class PostsController extends ControllerBase {
 
         $success = $post->save();
 
-        $tags = explode(",",$this->request->getPost("tags", array("trim", "lower")));
-        Posts::addTags($tags,$post->id);
+        $tags = explode(",", $this->request->getPost("tags", array("trim", "lower")));
+        Posts::addTags($tags, $post->id);
 
         if (!$success) {
 

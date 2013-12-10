@@ -1,21 +1,20 @@
 <?php
 
 
-class PostTags extends \Phalcon\Mvc\Model
-{
+class PostTags extends \Phalcon\Mvc\Model {
 
     /**
      *
      * @var integer
      */
     public $id;
-     
+
     /**
      *
      * @var integer
      */
     public $posts_id;
-     
+
     /**
      *
      * @var integer
@@ -25,8 +24,7 @@ class PostTags extends \Phalcon\Mvc\Model
     /**
      * Initialize method for model.
      */
-    public function initialize()
-    {
+    public function initialize() {
         $this->belongsTo("posts_id", "Posts", "id");
         $this->belongsTo("tags_id", "Tags", "id");
 
