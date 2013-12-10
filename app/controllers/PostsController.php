@@ -151,16 +151,8 @@ class PostsController extends ControllerBase {
 
         $success = $post->save();
 
-        $rawTags = explode(",",$this->request->getPost("tags", array("trim", "lower")));
-        foreach ($rawTags as $t){
-            $tag = new Tags();
-            $tag->tag = $t;
-            $tag->save();
-            $postTag = new PostTags();
-            $postTag->posts_id = $post->id;
-            $postTag->tags_id = $tag->id;
-            $postTag->save();
-        }
+        $tags = explode(",",$this->request->getPost("tags", array("trim", "lower")));
+        Posts::addTags($tags,$post->id);
 
         if (!$success) {
             foreach ($post->getMessages() as $message) {
@@ -222,16 +214,8 @@ class PostsController extends ControllerBase {
 
         $success = $post->save();
 
-        $rawTags = explode(",",$this->request->getPost("tags", array("trim", "lower")));
-        foreach ($rawTags as $t){
-            $tag = new Tags();
-            $tag->tag = $t;
-            $tag->save();
-            $postTag = new PostTags();
-            $postTag->posts_id = $post->id;
-            $postTag->tags_id = $tag->id;
-            $postTag->save();
-        }
+        $tags = explode(",",$this->request->getPost("tags", array("trim", "lower")));
+        Posts::addTags($tags,$post->id);
 
         if (!$success) {
 
