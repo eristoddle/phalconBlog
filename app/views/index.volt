@@ -4,6 +4,7 @@
 		<title>Phalcon Blog</title>
 		<link rel="stylesheet" href="/phalconBlog/css/bootstrap/bootstrap.min.css" type="text/css" />
         <link rel="stylesheet" href="/phalconBlog/css/bootstrap/bootstrap-responsive.min.css" type="text/css" />
+        {{ tag_html("link", ["rel": "alternate", "type": "application/rss+xml", "title": "RSS Feed for Phalcon Blog", "href": "/phalconBlog/posts/feed"], true, true, true) }}
 	</head>
 	<body>
 	    <div class="navbar">

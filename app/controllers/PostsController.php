@@ -308,4 +308,26 @@ class PostsController extends ControllerBase {
         $this->view->post = $post;
     }
 
+    /**
+     * RSS feed
+     */
+    public function feedAction() {
+        //TODO: Limit to 10
+        $posts = Posts::find(
+            array(
+                'order' => 'published DESC',
+                'limit' => 10
+            )
+        );
+
+        $rss_posts = array();
+        foreach ($posts as $post){
+            $post->rss_date = date("D, d M Y H:i:s O", strtotime($post->published));
+            $rss_posts[] = $post;
+        }
+        $this->view->posts = $rss_posts;
+
+        $this->view->setRenderLevel(Phalcon\Mvc\View::LEVEL_ACTION_VIEW);
+
+    }
 }
