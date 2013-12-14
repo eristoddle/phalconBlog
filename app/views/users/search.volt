@@ -8,7 +8,6 @@
         <tr>
             <th>Id</th>
             <th>Username</th>
-            <th>Password</th>
             <th>Name</th>
             <th>Email</th>
          </tr>
@@ -19,7 +18,6 @@
         <tr>
             <td>{{ user.id }}</td>
             <td>{{ user.username }}</td>
-            <td>{{ user.password }}</td>
             <td>{{ user.name }}</td>
             <td>{{ user.email }}</td>
             <td>{{ link_to("users/edit/"~user.id, "Edit") }}</td>

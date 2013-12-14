@@ -95,12 +95,3 @@ $di->set(
         ));
     }
 );
-
-$di->set(
-    'encryption', function () use ($config){
-        $encryption = new Phalcon\Crypt();
-        $encryption->setCipher('blowfish');
-        $encryption->setKey($config->application->salt);
-        return $encryption;
-    }, true
-);

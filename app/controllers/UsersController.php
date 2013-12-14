@@ -27,18 +27,16 @@ class UsersController extends ControllerBase {
     public function loginAction() {
 
         if ($this->request->isPost()) {
-            $query = Criteria::fromInput($this->di, "Users", $_POST);
-            $this->persistent->parameters = $query->getParams();
-            $parameters = $this->persistent->parameters;
-            if (!is_array($parameters)) {
-                $parameters = array();
-            }
-            $users = Users::find($parameters);
-            if (count($users) == 1) {
-                $user = $users->getFirst();
-                $this->session->set("user_id", $user->id);
-                $this->flash->success("Welcome " . $user->name);
-            } else {
+            $username = $this->request->getPost('username');
+            $password = $this->request->getPost('password');
+
+            $user = Users::findFirstByUsername($username);
+            if ($user) {
+                if ($this->security->checkHash($password, $user->password)) {
+                    $this->session->set("user_id", $user->id);
+                    $this->flash->success("Welcome " . $user->name);
+                }
+            }else{
                 $this->flash->error("Username and Password combination not found");
             }
         }
@@ -58,7 +56,7 @@ class UsersController extends ControllerBase {
         $this->flash->success("You have been logged out");
         return $this->dispatcher->forward(
             array(
-                "controller" => "users",
+                "controller" => "posts",
                 "action" => "index"
             )
         );
@@ -159,7 +157,8 @@ class UsersController extends ControllerBase {
 
         $user->id = $this->request->getPost("id");
         $user->username = $this->request->getPost("username");
-        $user->password = $this->request->getPost("password");
+        $password = $this->request->getPost("password");
+        $user->password = $this->security->hash($password);
         $user->name = $this->request->getPost("name");
         $user->email = $this->request->getPost("email", "email");
 
@@ -216,7 +215,8 @@ class UsersController extends ControllerBase {
 
         $user->id = $this->request->getPost("id");
         $user->username = $this->request->getPost("username");
-        $user->password = $this->request->getPost("password");
+        $password = $this->request->getPost("password");
+        $user->password = $this->security->hash($password);
         $user->name = $this->request->getPost("name");
         $user->email = $this->request->getPost("email", "email");
 
@@ -239,7 +239,7 @@ class UsersController extends ControllerBase {
         $this->flash->success("user was updated successfully");
         return $this->dispatcher->forward(
             array(
-                "controller" => "users",
+                "controller" => "posts",
                 "action" => "index"
             )
         );
