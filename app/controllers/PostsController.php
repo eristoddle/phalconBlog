@@ -312,7 +312,6 @@ class PostsController extends ControllerBase {
      * RSS feed
      */
     public function feedAction() {
-        //TODO: Limit to 10
         $posts = Posts::find(
             array(
                 'order' => 'published DESC',
@@ -328,6 +327,5 @@ class PostsController extends ControllerBase {
         $this->view->posts = $rss_posts;
 
         $this->view->setRenderLevel(Phalcon\Mvc\View::LEVEL_ACTION_VIEW);
-
     }
 }
