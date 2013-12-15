@@ -1,8 +1,5 @@
-
 {{ content() }}
-
 <h1>Comments</h1>
-
 <table class="browse" align="center">
     <thead>
         <tr>
@@ -30,19 +27,15 @@
     {% endfor %}
     {% endif %}
     </tbody>
-    <tbody>
-        <tr>
-            <td colspan="2" align="right">
-                <table align="center">
-                    <tr>
-                        <td>{{ link_to("comments/search", "First") }}</td>
-                        <td>{{ link_to("comments/search?page="~page.before, "Previous") }}</td>
-                        <td>{{ link_to("comments/search?page="~page.next, "Next") }}</td>
-                        <td>{{ link_to("comments/search?page="~page.last, "Last") }}</td>
-                        <td>{{ page.current~"/"~page.total_pages }}</td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-    <tbody>
+    <tbody><tr><td colspan="2" align="right">
+        <table align="center">
+            <tr>
+                <td>{{ link_to("comments/search", "First") }}</td>
+                <td>{{ link_to("comments/search?page="~page.before, "Previous") }}</td>
+                <td>{{ link_to("comments/search?page="~page.next, "Next") }}</td>
+                <td>{{ link_to("comments/search?page="~page.last, "Last") }}</td>
+                <td>{{ page.current~"/"~page.total_pages }}</td>
+            </tr>
+        </table>
+    </td></tr></tbody>
 </table>
