@@ -33,6 +33,7 @@
                             <li>{{ link_to("tags/", "Tags") }}</li>
                             <li>{{ link_to("users/", "Users") }}</li>
                             <li>{{ link_to("posts/new", "Create posts") }}</li>
+                            <li>{{ link_to("comments/", "Comments") }}</li>
                             <li><a href="/phalconBlog/webtools.php?_url=/index" target="_blank">Webtools</a></li>
                         </ul>
                     </div>
