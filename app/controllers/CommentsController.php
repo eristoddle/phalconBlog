@@ -1,7 +1,6 @@
 <?php
 
-use Phalcon\Mvc\Model\Criteria,
-    Phalcon\Paginator\Adapter\Model as Paginator;
+use Phalcon\Paginator\Adapter\Model as Paginator;
 
 class CommentsController extends ControllerBase {
 
