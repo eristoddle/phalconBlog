@@ -1,14 +1,6 @@
-
+{{ form("comments/save", "method":"post") }}
 {{ content() }}
-
-{{ submit_button("Save") }}
-
-<table width="100%">
-    <tr>
-        <td align="left">{{ link_to("comments", "Go Back") }}</td>
-        <td align="right">{{ submit_button("Save") }}</td>
-    <tr>
-</table>
+{{ link_to("comments", "Go Back") }}
 
 <div align="center">
     <h1>Edit comments</h1>
@@ -20,7 +12,7 @@
             <label for="body">Body</label>
         </td>
         <td align="left">
-                {{ text_field("body", "type" : "date") }}
+                {{ text_area("body", "type" : "date") }}
         </td>
     </tr>
     <tr>
@@ -49,32 +41,16 @@
     </tr>
     <tr>
         <td align="right">
-            <label for="submitted">Submitted</label>
-        </td>
-        <td align="left">
-            {{ text_field("submitted", "size" : 30) }}
-        </td>
-    </tr>
-    <tr>
-        <td align="right">
             <label for="publish">Publish</label>
         </td>
         <td align="left">
-            {{ text_field("publish", "type" : "numeric") }}
+            {{ radio_field("publish", "value" : 1) }} Yes
+            {{ radio_field("publish", "value" : 0) }} No
         </td>
     </tr>
-    <tr>
-        <td align="right">
-            <label for="posts_id">Posts</label>
-        </td>
-        <td align="left">
-            {{ text_field("posts_id", "type" : "numeric") }}
-        </td>
-    </tr>
-
     <tr>
         <td>{{ hidden_field("id") }}</td>
-        <td>{{ submit_button("Search") }}</td>
+        <td>{{ submit_button("Save", "class" : "btn") }}</td>
     </tr>
 </table>
 

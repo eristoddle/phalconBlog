@@ -1,86 +1,48 @@
 
 {{ content() }}
 
-<div align="right">
-    {{ link_to("comments/new", "Create comments") }}
-</div>
+<h1>Comments</h1>
 
-{{ form("comments/search", "method":"post", "autocomplete" : "off") }}
-
-<div align="center">
-    <h1>Search comments</h1>
-</div>
-
-<table>
-    <tr>
-        <td align="right">
-            <label for="id">Id</label>
-        </td>
-        <td align="left">
-            {{ text_field("id", "type" : "numeric") }}
-        </td>
-    </tr>
-    <tr>
-        <td align="right">
-            <label for="body">Body</label>
-        </td>
-        <td align="left">
-                {{ text_field("body", "type" : "date") }}
-        </td>
-    </tr>
-    <tr>
-        <td align="right">
-            <label for="name">Name</label>
-        </td>
-        <td align="left">
-                {{ text_field("name", "type" : "date") }}
-        </td>
-    </tr>
-    <tr>
-        <td align="right">
-            <label for="email">Email</label>
-        </td>
-        <td align="left">
-                {{ text_field("email", "type" : "date") }}
-        </td>
-    </tr>
-    <tr>
-        <td align="right">
-            <label for="url">Url</label>
-        </td>
-        <td align="left">
-                {{ text_field("url", "type" : "date") }}
-        </td>
-    </tr>
-    <tr>
-        <td align="right">
-            <label for="submitted">Submitted</label>
-        </td>
-        <td align="left">
-            {{ text_field("submitted", "size" : 30) }}
-        </td>
-    </tr>
-    <tr>
-        <td align="right">
-            <label for="publish">Publish</label>
-        </td>
-        <td align="left">
-            {{ text_field("publish", "type" : "numeric") }}
-        </td>
-    </tr>
-    <tr>
-        <td align="right">
-            <label for="posts_id">Posts</label>
-        </td>
-        <td align="left">
-            {{ text_field("posts_id", "type" : "numeric") }}
-        </td>
-    </tr>
-
-    <tr>
-        <td></td>
-        <td>{{ submit_button("Search") }}</td>
-    </tr>
+<table class="browse" align="center">
+    <thead>
+        <tr>
+            <th>Body</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Url</th>
+            <th>Submitted</th>
+            <th>Publish</th>
+         </tr>
+    </thead>
+    <tbody>
+    {% if page.items is defined %}
+    {% for comment in page.items %}
+        <tr>
+            <td>{{ comment.body }}</td>
+            <td>{{ comment.name }}</td>
+            <td>{{ comment.email }}</td>
+            <td>{{ comment.url }}</td>
+            <td>{{ comment.submitted }}</td>
+            <td>{{ comment.publish }}</td>
+            <td>{{ link_to("comments/edit/"~comment.id, "Edit") }}</td>
+            <td>{{ link_to("comments/delete/"~comment.id, "Delete") }}</td>
+        </tr>
+    {% endfor %}
+    {% endif %}
+    </tbody>
+    <tbody>
+        <tr>
+            <td colspan="2" align="right">
+                <table align="center">
+                    <tr>
+                        <td>{{ link_to("comments/search", "First") }}</td>
+                        <td>{{ link_to("comments/search?page="~page.before, "Previous") }}</td>
+                        <td>{{ link_to("comments/search?page="~page.next, "Next") }}</td>
+                        <td>{{ link_to("comments/search?page="~page.last, "Last") }}</td>
+                        <td>{{ page.current~"/"~page.total_pages }}</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    <tbody>
 </table>
-
-</form>

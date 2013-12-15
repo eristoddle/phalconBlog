@@ -12,7 +12,7 @@ class PostsController extends ControllerBase {
         $numberPage = $this->request->getQuery("page", "int", 1);
 
         $posts = Posts::query()
-            ->order("published")
+            ->order("published DESC")
             ->execute();
 
         $paginator = new Paginator(array(
