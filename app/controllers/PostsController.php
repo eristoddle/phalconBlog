@@ -328,4 +328,30 @@ class PostsController extends ControllerBase {
 
         $this->view->setRenderLevel(Phalcon\Mvc\View::LEVEL_ACTION_VIEW);
     }
+
+    /**
+     * Comment action
+     *
+     */
+    public function commentAction(){
+        $comment = new Comments();
+        $comment->posts_id = $this->request->getPost("posts_id");
+        $comment->body = $this->request->getPost("body");
+        $comment->name = $this->request->getPost("name");
+        $comment->email = $this->request->getPost("email");
+        $comment->url = $this->request->getPost("url");
+        $comment->submitted = date("Y-m-d H:i:s");
+        $comment->publish = 0;
+        $comment->save();
+
+        $this->flash->success("Your comment has been submitted.");
+
+        return $this->dispatcher->forward(
+            array(
+                "controller" => "posts",
+                "action" => "show",
+                "params" => array($comment->posts_id)
+            )
+        );
+    }
 }
