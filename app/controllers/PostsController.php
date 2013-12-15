@@ -290,9 +290,10 @@ class PostsController extends ControllerBase {
      */
     public function showAction($id) {
 
+        $post = Posts::findFirstByid($id);
+
         if (!$this->request->isPost()) {
 
-            $post = Posts::findFirstByid($id);
             if (!$post) {
                 $this->flash->error("post was not found");
                 return $this->dispatcher->forward(
