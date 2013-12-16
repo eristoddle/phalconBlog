@@ -95,3 +95,12 @@ $di->set(
         ));
     }
 );
+
+//Set up encryption key
+$di->set(
+    'crypt', function () use ($config) {
+        $crypt = new Phalcon\Crypt();
+        $crypt->setKey($config->application->encryptKey);
+        return $crypt;
+    }
+);
