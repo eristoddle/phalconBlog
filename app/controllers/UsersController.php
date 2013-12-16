@@ -25,7 +25,6 @@ class UsersController extends ControllerBase {
      * Login action
      */
     public function loginAction() {
-
         if ($this->request->isPost()) {
             $username = $this->request->getPost('username');
             $password = $this->request->getPost('password');
@@ -34,6 +33,7 @@ class UsersController extends ControllerBase {
             if ($user) {
                 if ($this->security->checkHash($password, $user->password)) {
                     $this->session->set("user_id", $user->id);
+                    $this->cookies->set('user_id', $user->id);
                     $this->flash->success("Welcome " . $user->name);
                 }
             }else{

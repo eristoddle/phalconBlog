@@ -125,6 +125,10 @@ class PostsController extends ControllerBase {
             );
         }
 
+        if ($this->cookies->has('user_id')) {
+            $this->session->set('user_id', $this->cookies->get('user_id'));
+        }
+
         if (!$this->session->has("user_id")) {
             $this->flash->error("Please login to create a post");
             return $this->dispatcher->forward(
