@@ -11,6 +11,9 @@ class UsersController extends ControllerBase {
      */
     public function indexAction() {
         $this->persistent->parameters = null;
+        if ($this->cookies->has('user_id')) {
+            $this->session->set('user_id', $this->cookies->get('user_id'));
+        }
         if ($this->session->has("user_id")) {
             return $this->dispatcher->forward(
                 array(
@@ -34,6 +37,10 @@ class UsersController extends ControllerBase {
                 if ($this->security->checkHash($password, $user->password)) {
                     $this->session->set("user_id", $user->id);
                     $this->cookies->set('user_id', $user->id);
+                    $this->session->set('auth', array(
+                        'id' => $user->id,
+                        'name' => $user->name
+                    ));
                     $this->flash->success("Welcome " . $user->name);
                 }
             }else{
@@ -52,7 +59,8 @@ class UsersController extends ControllerBase {
      * Logout action
      */
     public function logoutAction() {
-        $this->session->remove("user_id");
+        $this->cookies->delete("user_id");
+        $this->session->destroy();
         $this->flash->success("You have been logged out");
         return $this->dispatcher->forward(
             array(

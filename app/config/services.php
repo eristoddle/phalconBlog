@@ -104,3 +104,13 @@ $di->set(
         return $crypt;
     }
 );
+
+//Dispatcher
+$di->set('dispatcher', function() use ($di) {
+    $eventsManager = $di->getShared('eventsManager');
+    $security = new Security($di);
+    $eventsManager->attach('dispatch', $security);
+    $dispatcher = new Phalcon\Mvc\Dispatcher();
+    $dispatcher->setEventsManager($eventsManager);
+    return $dispatcher;
+});
