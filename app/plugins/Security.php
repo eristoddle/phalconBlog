@@ -25,34 +25,34 @@ class Security extends Plugin {
                 $acl->addRole($role);
             }
 
-            $privateResources = array(
+            $private = array(
                 'comments' => array('index', 'edit', 'delete', 'save'),
                 'posts' => array('new', 'edit', 'save', 'create', 'delete'),
                 'users' => array('search', 'new', 'edit', 'save', 'create', 'delete', 'logout')
             );
-            foreach ($privateResources as $resource => $actions) {
+            foreach ($private as $resource => $actions) {
                 $acl->addResource(new Phalcon\Acl\Resource($resource), $actions);
             }
 
-            $publicResources = array(
+            $public = array(
                 'index' => array('index'),
                 'posts' => array('index', 'search', 'show'),
                 'users' => array('login', 'index'),
                 'js' => array('jquery')
             );
-            foreach ($publicResources as $resource => $actions) {
+            foreach ($public as $resource => $actions) {
                 $acl->addResource(new Phalcon\Acl\Resource($resource), $actions);
             }
 
             foreach ($roles as $role) {
-                foreach ($publicResources as $resource => $actions) {
+                foreach ($public as $resource => $actions) {
                     foreach ($actions as $action) {
                         $acl->allow($role->getName(), $resource, $action);
                     }
                 }
             }
 
-            foreach ($privateResources as $resource => $actions) {
+            foreach ($private as $resource => $actions) {
                 foreach ($actions as $action) {
                     $acl->allow('Users', $resource, $action);
                 }
@@ -66,8 +66,8 @@ class Security extends Plugin {
 
     public function beforeDispatch(Event $event, Dispatcher $dispatcher) {
 
-        $auth = $this->session->get('user_id');
-        if (!$auth) {
+        $user = $this->session->get('user_id');
+        if (!$user) {
             $role = 'Guests';
         } else {
             $role = 'Users';
@@ -75,7 +75,6 @@ class Security extends Plugin {
 
         $controller = $dispatcher->getControllerName();
         $action = $dispatcher->getActionName();
-
         $acl = $this->getAcl();
 
         $allowed = $acl->isAllowed($role, $controller, $action);
