@@ -36,7 +36,7 @@ class Security extends Plugin {
 
             $public = array(
                 'index' => array('index'),
-                'posts' => array('index', 'search', 'show'),
+                'posts' => array('index', 'search', 'show', 'comment'),
                 'users' => array('login', 'index'),
                 'js' => array('jquery')
             );
