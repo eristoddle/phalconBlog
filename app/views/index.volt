@@ -2,8 +2,8 @@
 <html>
 	<head>
 		<title>Phalcon Blog</title>
-		<link rel="stylesheet" href="/phalconBlog/css/bootstrap/bootstrap.min.css" type="text/css" />
-        <link rel="stylesheet" href="/phalconBlog/css/bootstrap/bootstrap-responsive.min.css" type="text/css" />
+        {{ stylesheet_link("css/bootstrap/bootstrap.min.css") }}
+        {{ stylesheet_link("css/bootstrap/bootstrap-responsive.min.css") }}
         {{ tag_html(
             "link",
             [
@@ -26,7 +26,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </a>
-                    <a href="/phalconBlog" class="brand">Phalcon Blog</a>
+                    {{ link_to("", "Phalcon Blog", "class" : "brand") }}
                     <div class="nav-collapse">
                         <ul class="nav">
                             <li>{{ link_to("posts/", "Posts") }}</li>
@@ -34,7 +34,7 @@
                             <li>{{ link_to("users/", "Users") }}</li>
                             <li>{{ link_to("posts/new", "Create posts") }}</li>
                             <li>{{ link_to("comments/", "Comments") }}</li>
-                            <li><a href="/phalconBlog/webtools.php?_url=/index" target="_blank">Webtools</a></li>
+                            <li>{{ link_to("webtools.php", "Webtools", "target" : "blank") }}</li>
                         </ul>
                     </div>
                 </div>
@@ -49,7 +49,7 @@
                                 {{ text_field("body", "class" : "input-medium") }}
                                 {{ submit_button("Search", "class" : "btn") }}
                             </div>
-                       </form>
+                        {{ end_form() }}
                     </div>
                 </div>
             <div class="span9 well">
@@ -57,7 +57,7 @@
             </div>
             </div>
         </div>
-		<script src="/phalconBlog/js/jquery/jquery.min.js" type="text/javascript"></script>
-        <script src="/phalconBlog/js/bootstrap/bootstrap.min.js" type="text/javascript"></script>
+        {{ javascript_include("js/jquery.min.js") }}
+        {{ javascript_include("js/bootstrap.min.js") }}
 	</body>
 </html>

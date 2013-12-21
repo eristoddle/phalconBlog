@@ -16,4 +16,4 @@
 
 {{ submit_button("Login", "class" : "btn") }}
 
-</form>
+{{ end_form() }}

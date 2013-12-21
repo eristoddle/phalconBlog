@@ -46,4 +46,4 @@
     </tr>
 </table>
 
-</form>
+{{ end_form() }}
