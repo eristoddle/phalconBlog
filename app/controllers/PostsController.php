@@ -296,6 +296,7 @@ class PostsController extends ControllerBase {
 
         }
 
+        $this->tag->prependTitle($post->title . " - ");
         $this->view->post = $post;
     }
 
