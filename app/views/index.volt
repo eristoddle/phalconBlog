@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Phalcon Blog</title>
+		{{ get_title() }}
         {{ stylesheet_link("css/bootstrap/bootstrap.min.css") }}
         {{ stylesheet_link("css/bootstrap/bootstrap-responsive.min.css") }}
         {{ tag_html(
