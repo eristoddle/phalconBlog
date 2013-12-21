@@ -1,4 +1,4 @@
-<?php $this->tag->getDoctype() ?>
+{{ get_doctype() }}
 <html>
 	<head>
 		{{ get_title() }}
