@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<?php $this->tag->getDoctype() ?>
 <html>
 	<head>
 		{{ get_title() }}
