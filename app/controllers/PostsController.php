@@ -156,6 +156,7 @@ class PostsController extends ControllerBase {
             );
         }
 
+        $this->sendPings();
         $this->flash->success("post was created successfully");
         return $this->dispatcher->forward(
             array(
@@ -345,5 +346,40 @@ class PostsController extends ControllerBase {
                 "params" => array($comment->posts_id)
             )
         );
+    }
+
+    private function sendPings(){
+        $request = '<?xml version="1.0" encoding="iso-8859-1"?>
+                    <methodCall>
+                    <methodName>weblogUpdates.ping</methodName>
+                    <params>
+                     <param>
+                      <value>
+                       <string>'.$this->config->blog->title.'</string>
+                      </value>
+                     </param>
+                     <param>
+                      <value>
+                       <string>'.$this->config->blog->url.$this->url->get('posts/feed').'</string>
+                      </value>
+                     </param>
+                    </params>
+                    </methodCall>';
+
+        $ping_urls = array(
+            'http://blogsearch.google.com/ping/RPC2',
+            'http://rpc.weblogs.com/RPC2',
+            'http://ping.blo.gs/'
+        );
+        $results = array();
+        foreach($ping_urls as $ping_url){
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, $ping_url);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true );
+            curl_setopt($ch, CURLOPT_POST, true );
+            curl_setopt($ch, CURLOPT_POSTFIELDS, trim($request));
+            $results[] = curl_exec($ch);
+        }
+        curl_close($ch);
     }
 }

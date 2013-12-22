@@ -114,3 +114,6 @@ $di->set('dispatcher', function() use ($di) {
     $dispatcher->setEventsManager($eventsManager);
     return $dispatcher;
 });
+
+//Load config into the di
+$di->set('config', $config);
