@@ -368,17 +368,16 @@ class PostsController extends ControllerBase {
 
         $ping_urls = array(
             'http://blogsearch.google.com/ping/RPC2',
-            'http://rpc.weblogs.com/RPC2',
-            'http://ping.blo.gs/'
+            'http://rpc.weblogs.com/RPC2'
         );
-        $results = array();
         foreach($ping_urls as $ping_url){
             $ch = curl_init();
             curl_setopt($ch, CURLOPT_URL, $ping_url);
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true );
             curl_setopt($ch, CURLOPT_POST, true );
             curl_setopt($ch, CURLOPT_POSTFIELDS, trim($request));
-            $results[] = curl_exec($ch);
+            $result = curl_exec($ch);
+            $this->pingLogger->log($ping_url.PHP_EOL.$result);
         }
         curl_close($ch);
     }

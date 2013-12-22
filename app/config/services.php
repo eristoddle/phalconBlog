@@ -106,14 +106,24 @@ $di->set(
 );
 
 //Dispatcher
-$di->set('dispatcher', function() use ($di) {
-    $eventsManager = $di->getShared('eventsManager');
-    $security = new Security($di);
-    $eventsManager->attach('dispatch', $security);
-    $dispatcher = new Phalcon\Mvc\Dispatcher();
-    $dispatcher->setEventsManager($eventsManager);
-    return $dispatcher;
-});
+$di->set(
+    'dispatcher', function () use ($di) {
+        $eventsManager = $di->getShared('eventsManager');
+        $security = new Security($di);
+        $eventsManager->attach('dispatch', $security);
+        $dispatcher = new Phalcon\Mvc\Dispatcher();
+        $dispatcher->setEventsManager($eventsManager);
+        return $dispatcher;
+    }
+);
 
 //Load config into the di
 $di->set('config', $config);
+
+//Logging
+$di->set(
+    'pingLogger', function () use ($config){
+        $logger = new \Phalcon\Logger\Adapter\File($config->application->logsDir.'ping.log');
+        return $logger;
+    }
+);
