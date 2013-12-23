@@ -281,9 +281,11 @@ class PostsController extends ControllerBase {
      */
     public function showAction($id) {
 
-        $post = Posts::findFirstByid($id);
+        $this->view->cacheKey = PageCache::createKey('posts', 'show', array($id));
+        $content = $this->view->getCache()->start($this->view->cacheKey);
 
-        if (!$this->request->isPost()) {
+        if ($content === null) {
+            $post = Posts::findFirstByid($id);
 
             if (!$post) {
                 $this->flash->error("post was not found");
@@ -295,10 +297,12 @@ class PostsController extends ControllerBase {
                 );
             }
 
+            $this->tag->prependTitle($post->title . " - ");
+            $this->view->post = $post;
+        }else{
+            $this->view->disable();
+            echo $content;
         }
-
-        $this->tag->prependTitle($post->title . " - ");
-        $this->view->post = $post;
     }
 
     /**
@@ -313,7 +317,7 @@ class PostsController extends ControllerBase {
         );
 
         $rss_posts = array();
-        foreach ($posts as $post){
+        foreach ($posts as $post) {
             $post->rss_date = date("D, d M Y H:i:s O", strtotime($post->published));
             $rss_posts[] = $post;
         }
@@ -326,7 +330,7 @@ class PostsController extends ControllerBase {
      * Comment action
      *
      */
-    public function commentAction(){
+    public function commentAction() {
         $comment = new Comments();
         $comment->posts_id = $this->request->getPost("posts_id");
         $comment->body = $this->request->getPost("body");
@@ -348,19 +352,20 @@ class PostsController extends ControllerBase {
         );
     }
 
-    private function sendPings(){
-        $request = '<?xml version="1.0" encoding="iso-8859-1"?>
+    private function sendPings() {
+        $request
+            = '<?xml version="1.0" encoding="iso-8859-1"?>
                     <methodCall>
                     <methodName>weblogUpdates.ping</methodName>
                     <params>
                      <param>
                       <value>
-                       <string>'.$this->config->blog->title.'</string>
+                       <string>' . $this->config->blog->title . '</string>
                       </value>
                      </param>
                      <param>
                       <value>
-                       <string>'.$this->config->blog->url.$this->url->get('posts/feed').'</string>
+                       <string>' . $this->config->blog->url . $this->url->get('posts/feed') . '</string>
                       </value>
                      </param>
                     </params>
@@ -370,14 +375,14 @@ class PostsController extends ControllerBase {
             'http://blogsearch.google.com/ping/RPC2',
             'http://rpc.weblogs.com/RPC2'
         );
-        foreach($ping_urls as $ping_url){
+        foreach ($ping_urls as $ping_url) {
             $ch = curl_init();
             curl_setopt($ch, CURLOPT_URL, $ping_url);
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true );
-            curl_setopt($ch, CURLOPT_POST, true );
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($ch, CURLOPT_POST, true);
             curl_setopt($ch, CURLOPT_POSTFIELDS, trim($request));
             $result = curl_exec($ch);
-            $this->pingLogger->log($ping_url.PHP_EOL.$result);
+            $this->pingLogger->log($ping_url . PHP_EOL . $result);
         }
         curl_close($ch);
     }

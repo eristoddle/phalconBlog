@@ -25,7 +25,12 @@ $di->set(
  * Setting up the view component
  */
 $di->set(
-    'view', function () use ($config) {
+    'view', function () use ($config, $di) {
+        $eventsManager = new Phalcon\Events\Manager();
+        $pageCache = new PageCache();
+        $eventsManager->attach(
+            "view", $pageCache
+        );
 
         $view = new View();
 
@@ -49,6 +54,8 @@ $di->set(
                 '.phtml' => 'Phalcon\Mvc\View\Engine\Php'
             )
         );
+
+        $view->setEventsManager($eventsManager);
 
         return $view;
     }, true
@@ -122,8 +129,26 @@ $di->set('config', $config);
 
 //Logging
 $di->set(
-    'pingLogger', function () use ($config){
-        $logger = new \Phalcon\Logger\Adapter\File($config->application->logsDir.'ping.log');
+    'pingLogger', function () use ($config) {
+        $logger = new \Phalcon\Logger\Adapter\File($config->application->logsDir . 'ping.log');
         return $logger;
+    }
+);
+
+//Cache
+$di->set(
+    'viewCache', function () use ($config) {
+
+        //Cache for one day
+        $frontCache = new \Phalcon\Cache\Frontend\Data(array(
+            "lifetime" => 86400
+        ));
+
+        //Set file cache
+        $cache = new Phalcon\Cache\Backend\File($frontCache, array(
+            "cacheDir" => $config->application->cacheDir
+        ));
+
+        return $cache;
     }
 );
