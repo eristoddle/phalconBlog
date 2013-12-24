@@ -1,0 +1,75 @@
+[Sat, 21 Dec 13 22:31:35 -0600][DEBUG] December 21, 2013, 10:31 pm - http://blogsearch.google.com/ping/RPC2
+[Sat, 21 Dec 13 22:31:35 -0600][DEBUG] <?xml version="1.0"?>
+<methodResponse><params>
+  <param><value><struct>
+    <member>
+      <name>flerror</name><value><boolean>0</boolean></value>
+    </member>
+    <member>
+      <name>message</name><value>Thanks for the ping.</value>
+    </member>
+  </struct></value></param>
+</params></methodResponse>
+
+[Sat, 21 Dec 13 22:31:35 -0600][DEBUG] December 21, 2013, 10:31 pm - http://rpc.weblogs.com/RPC2
+[Sat, 21 Dec 13 22:31:36 -0600][DEBUG] <?xml version="1.0"?><methodResponse><params><param><value><struct><member><name>message</name><value>Thanks&#32;for&#32;the&#32;ping.</value></member><member><name>legal</name><value>You&#32;agree&#32;that&#32;use&#32;of&#32;the&#32;Weblogs.com&#32;ping&#32;service&#32;is&#32;governed&#32;by&#32;the&#32;Terms&#32;of&#32;Use&#32;found&#32;at&#32;www.weblogs.com.</value></member><member><name>flerror</name><value><boolean>0</boolean></value></member></struct></value></param></params></methodResponse>
+[Sat, 21 Dec 13 22:31:36 -0600][DEBUG] December 21, 2013, 10:31 pm - http://ping.blo.gs/
+[Sat, 21 Dec 13 22:31:36 -0600][DEBUG] <html>
+<head><title>403 Forbidden</title></head>
+<body bgcolor="white">
+<center><h1>403 Forbidden</h1></center>
+<hr><center>nginx</center>
+</body>
+</html>
+
+[Sat, 21 Dec 13 22:34:35 -0600][DEBUG] http://blogsearch.google.com/ping/RPC2
+----------------
+<?xml version="1.0"?>
+<methodResponse><params>
+  <param><value><struct>
+    <member>
+      <name>flerror</name><value><boolean>0</boolean></value>
+    </member>
+    <member>
+      <name>message</name><value>Thanks for the ping.</value>
+    </member>
+  </struct></value></param>
+</params></methodResponse>
+
+[Sat, 21 Dec 13 22:34:35 -0600][DEBUG] http://rpc.weblogs.com/RPC2
+----------------
+<?xml version="1.0"?><methodResponse><params><param><value><struct><member><name>message</name><value>Thanks&#32;for&#32;the&#32;ping.</value></member><member><name>legal</name><value>You&#32;agree&#32;that&#32;use&#32;of&#32;the&#32;Weblogs.com&#32;ping&#32;service&#32;is&#32;governed&#32;by&#32;the&#32;Terms&#32;of&#32;Use&#32;found&#32;at&#32;www.weblogs.com.</value></member><member><name>flerror</name><value><boolean>0</boolean></value></member></struct></value></param></params></methodResponse>
+[Sat, 21 Dec 13 22:34:36 -0600][DEBUG] http://ping.blo.gs/
+----------------
+<html>
+<head><title>403 Forbidden</title></head>
+<body bgcolor="white">
+<center><h1>403 Forbidden</h1></center>
+<hr><center>nginx</center>
+</body>
+</html>
+
+[Sat, 21 Dec 13 22:35:21 -0600][DEBUG] http://blogsearch.google.com/ping/RPC2
+<?xml version="1.0"?>
+<methodResponse><params>
+  <param><value><struct>
+    <member>
+      <name>flerror</name><value><boolean>0</boolean></value>
+    </member>
+    <member>
+      <name>message</name><value>Thanks for the ping.</value>
+    </member>
+  </struct></value></param>
+</params></methodResponse>
+
+[Sat, 21 Dec 13 22:35:21 -0600][DEBUG] http://rpc.weblogs.com/RPC2
+<?xml version="1.0"?><methodResponse><params><param><value><struct><member><name>message</name><value>Thanks&#32;for&#32;the&#32;ping.</value></member><member><name>legal</name><value>You&#32;agree&#32;that&#32;use&#32;of&#32;the&#32;Weblogs.com&#32;ping&#32;service&#32;is&#32;governed&#32;by&#32;the&#32;Terms&#32;of&#32;Use&#32;found&#32;at&#32;www.weblogs.com.</value></member><member><name>flerror</name><value><boolean>0</boolean></value></member></struct></value></param></params></methodResponse>
+[Sat, 21 Dec 13 22:35:21 -0600][DEBUG] http://ping.blo.gs/
+<html>
+<head><title>403 Forbidden</title></head>
+<body bgcolor="white">
+<center><h1>403 Forbidden</h1></center>
+<hr><center>nginx</center>
+</body>
+</html>
+
