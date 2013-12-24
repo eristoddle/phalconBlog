@@ -26,12 +26,6 @@ $di->set(
  */
 $di->set(
     'view', function () use ($config, $di) {
-        $eventsManager = new Phalcon\Events\Manager();
-        $pageCache = new PageCache();
-        $eventsManager->attach(
-            "view", $pageCache
-        );
-
         $view = new View();
 
         $view->setViewsDir($config->application->viewsDir);
@@ -54,8 +48,6 @@ $di->set(
                 '.phtml' => 'Phalcon\Mvc\View\Engine\Php'
             )
         );
-
-        $view->setEventsManager($eventsManager);
 
         return $view;
     }, true

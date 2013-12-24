@@ -280,29 +280,28 @@ class PostsController extends ControllerBase {
      * @param string $id
      */
     public function showAction($id) {
+        $cache = $this->di->get('viewCache');
+        $key = $this->createKey('posts', 'show', array($id));
+        $post = $cache->get($key);
 
-        $this->view->cacheKey = PageCache::createKey('posts', 'show', array($id));
-        $content = $this->view->getCache()->start($this->view->cacheKey);
-
-        if ($content === null) {
+        if ($post === null) {
             $post = Posts::findFirstByid($id);
-
-            if (!$post) {
-                $this->flash->error("post was not found");
-                return $this->dispatcher->forward(
-                    array(
-                        "controller" => "posts",
-                        "action" => "index"
-                    )
-                );
-            }
-
-            $this->tag->prependTitle($post->title . " - ");
-            $this->view->post = $post;
-        }else{
-            $this->view->disable();
-            echo $content;
+            $cache->save($key, $post);
         }
+
+        if (!$post) {
+            $this->flash->error("post was not found");
+            return $this->dispatcher->forward(
+                array(
+                    "controller" => "posts",
+                    "action" => "index"
+                )
+            );
+        }
+
+        $this->tag->prependTitle($post->title . " - ");
+        $this->view->post = $post;
+
     }
 
     /**

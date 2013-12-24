@@ -9,4 +9,7 @@ class ControllerBase extends Controller {
         $this->tag->setDoctype(\Phalcon\Tag::HTML5);
     }
 
+    public function createKey($controller, $action, $parameters = array()){
+        return urlencode($controller.$action.serialize($parameters));
+    }
 }
