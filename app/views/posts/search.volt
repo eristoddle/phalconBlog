@@ -1,3 +1,4 @@
+{{ form("posts/search", "method":"post") }}
 
 {{ content() }}
 
