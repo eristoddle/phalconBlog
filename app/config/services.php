@@ -1,6 +1,7 @@
 <?php
 use Phalcon\DI\FactoryDefault,
     Phalcon\Mvc\View,
+    Phalcon\Mvc\Router,
     Phalcon\Mvc\Url as UrlResolver,
     Phalcon\Db\Adapter\Pdo\Mysql as DbAdapter,
     Phalcon\Mvc\View\Engine\Volt as VoltEngine,
@@ -142,5 +143,19 @@ $di->set(
         ));
 
         return $cache;
+    }
+);
+
+//Router
+$di->set(
+    'router', function () {
+        $router = new Router();
+        $router->add(
+            "/", array(
+                'controller' => 'posts',
+                'action' => 'index',
+            )
+        );
+        return $router;
     }
 );
