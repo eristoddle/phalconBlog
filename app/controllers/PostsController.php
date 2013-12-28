@@ -11,9 +11,7 @@ class PostsController extends ControllerBase {
     public function indexAction() {
         $numberPage = $this->request->getQuery("page", "int", 1);
 
-        $posts = Posts::query()
-            ->order("published DESC")
-            ->execute();
+        $posts = Posts::find();
 
         $paginator = new Paginator(array(
             "data" => $posts,
