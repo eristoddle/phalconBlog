@@ -290,10 +290,10 @@ class PostsController extends ControllerBase {
         }
 
         if (!$post) {
-            $this->flash->error("post was not found");
+            $this->flashSession->error("post was not found");
             $response = new \Phalcon\Http\Response();
             $response->setStatusCode(404, "Not Found");
-            $response->redirect("posts/index");
+            return $response->redirect("posts/index");
         }
 
         $this->tag->prependTitle($post->title . " - ");
