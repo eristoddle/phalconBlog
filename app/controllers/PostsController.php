@@ -203,19 +203,16 @@ class PostsController extends ControllerBase {
         $post->pinged = $this->request->getPost("pinged");
         $post->to_ping = $this->request->getPost("to_ping");
 
-        //$success = $post->save();
-        $success = false;
+        $success = $post->save();
 
         $tags = explode(",", $this->request->getPost("tags", array("trim", "lower")));
         Posts::addTags($tags, $post->id);
 
         if (!$success) {
-
             foreach ($post->getMessages() as $message) {
                 $this->flash->error($message);
             }
             $this->flash->error("post was not saved");
-
             $this->view->pick('posts/edit');
             $this->view->post = $post;
         } else {
