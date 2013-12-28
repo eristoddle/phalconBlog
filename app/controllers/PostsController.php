@@ -291,12 +291,9 @@ class PostsController extends ControllerBase {
 
         if (!$post) {
             $this->flash->error("post was not found");
-            return $this->dispatcher->forward(
-                array(
-                    "controller" => "posts",
-                    "action" => "index"
-                )
-            );
+            $response = new \Phalcon\Http\Response();
+            $response->setStatusCode(404, "Not Found");
+            $response->redirect("posts/index");
         }
 
         $this->tag->prependTitle($post->title . " - ");
