@@ -1,4 +1,5 @@
 <?php
+use Phalcon\Mvc\Model\Behavior\Timestampable;
 
 
 class Posts extends \Phalcon\Mvc\Model {
