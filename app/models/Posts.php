@@ -70,7 +70,7 @@ class Posts extends \Phalcon\Mvc\Model {
     /**
      * Adds tags to a post
      */
-    protected function addTags($tags, $post_id) {
+    protected function addTags($tags) {
         foreach ($tags as $t) {
             $t = trim($t);
             $tag = Tags::findFirst(array("tag = '$t'"));
@@ -83,14 +83,14 @@ class Posts extends \Phalcon\Mvc\Model {
                 array(
                     "conditions" => "posts_id = ?1 AND tags_id = ?2",
                     "bind" => array(
-                        1 => $post_id,
+                        1 => $this->id,
                         2 => $tag->id
                     )
                 )
             );
             if (!$postTag) {
                 $postTag = new PostTags();
-                $postTag->posts_id = $post_id;
+                $postTag->posts_id = $this->id;
                 $postTag->tags_id = $tag->id;
                 $postTag->save();
             }
