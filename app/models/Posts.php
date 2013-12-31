@@ -70,7 +70,7 @@ class Posts extends \Phalcon\Mvc\Model {
     /**
      * Adds tags to a post
      */
-    static function addTags($tags, $post_id) {
+    protected function addTags($tags, $post_id) {
         foreach ($tags as $t) {
             $t = trim($t);
             $tag = Tags::findFirst(array("tag = '$t'"));
