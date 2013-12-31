@@ -74,7 +74,7 @@ class Posts extends \Phalcon\Mvc\Model {
         ));
         $this->addBehavior(new Timestampable(
             array(
-                'beforeCreate' => array(
+                'beforeUpdate' => array(
                     'field' => 'updated',
                     'format' => 'Y-m-d H:i:s'
                 )
