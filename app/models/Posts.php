@@ -64,7 +64,22 @@ class Posts extends \Phalcon\Mvc\Model {
         $this->hasMany("id", "Comments", "posts_id", NULL);
         $this->hasMany("id", "PostTags", "posts_id", NULL);
         $this->belongsTo("users_id", "Users", "id", array("foreignKey" => true));
-
+        $this->addBehavior(new Timestampable(
+            array(
+                'beforeCreate' => array(
+                    'field' => 'published',
+                    'format' => 'Y-m-d H:i:s'
+                )
+            )
+        ));
+        $this->addBehavior(new Timestampable(
+            array(
+                'beforeCreate' => array(
+                    'field' => 'updated',
+                    'format' => 'Y-m-d H:i:s'
+                )
+            )
+        ));
     }
 
     /**
