@@ -101,8 +101,6 @@ class PostsController extends ControllerBase {
             $this->tag->setDefault("body", $post->body);
             $this->tag->setDefault("excerpt", $post->excerpt);
             $this->tag->setDefault("tags", implode(",", $tagArray));
-            $this->tag->setDefault("published", $post->published);
-            $this->tag->setDefault("updated", $post->updated);
             $this->tag->setDefault("pinged", $post->pinged);
             $this->tag->setDefault("to_ping", $post->to_ping);
 
@@ -132,8 +130,6 @@ class PostsController extends ControllerBase {
         $post->title = $this->request->getPost("title");
         $post->body = $this->request->getPost("body");
         $post->excerpt = $this->request->getPost("excerpt");
-        $post->published = date("Y-m-d H:i:s");
-        $post->updated = date("Y-m-d H:i:s");
         $post->pinged = $this->request->getPost("pinged");
         $post->to_ping = $this->request->getPost("to_ping");
 
@@ -197,7 +193,6 @@ class PostsController extends ControllerBase {
         $post->title = $this->request->getPost("title");
         $post->body = $this->request->getPost("body");
         $post->excerpt = $this->request->getPost("excerpt");
-        $post->updated = date("Y-m-d H:i:s");
         $post->pinged = $this->request->getPost("pinged");
         $post->to_ping = $this->request->getPost("to_ping");
 
