@@ -136,7 +136,7 @@ class PostsController extends ControllerBase {
         $success = $post->save();
 
         $tags = explode(",", $this->request->getPost("tags", array("trim", "lower")));
-        $post->addTags($tags, $post->id);
+        $post->addTags($tags);
 
         if (!$success) {
             foreach ($post->getMessages() as $message) {
@@ -199,7 +199,7 @@ class PostsController extends ControllerBase {
         $success = $post->save();
 
         $tags = explode(",", $this->request->getPost("tags", array("trim", "lower")));
-        $post->addTags($tags, $post->id);
+        $post->addTags($tags);
 
         if (!$success) {
             foreach ($post->getMessages() as $message) {
