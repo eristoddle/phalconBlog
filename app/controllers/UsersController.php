@@ -33,16 +33,14 @@ class UsersController extends ControllerBase {
             $password = $this->request->getPost('password');
 
             $user = Users::findFirstByUsername($username);
-            if ($user) {
-                if ($this->security->checkHash($password, $user->password)) {
-                    $this->session->set("user_id", $user->id);
-                    $this->cookies->set('user_id', $user->id);
-                    $this->session->set('auth', array(
-                        'id' => $user->id,
-                        'name' => $user->name
-                    ));
-                    $this->flash->success("Welcome " . $user->name);
-                }
+            if ($user && $this->security->checkHash($password, $user->password)) {
+                $this->session->set("user_id", $user->id);
+                $this->cookies->set('user_id', $user->id);
+                $this->session->set('auth', array(
+                    'id' => $user->id,
+                    'name' => $user->name
+                ));
+                $this->flash->success("Welcome " . $user->name);
             }else{
                 $this->flash->error("Username and Password combination not found");
             }
