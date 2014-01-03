@@ -2,17 +2,15 @@
 
 <rss version="2.0">
     <channel>
-        <title>Phalcon Blog</title>
+        <title>{{ config.blog.title }}</title>
         <description>This is a demonstration of the Phalcon Framework</description>
-        <link>http://localhost/phalconBlog/posts/feed</link>
-        <lastBuildDate>{{ date("D, d M Y H:i:s O") }}</lastBuildDate>
-        <pubDate>{{ date("D, d M Y H:i:s O") }}</pubDate>
+        <link>{{ config.blog.url }}</link>
         {% for post in posts %}
             <item>
-                <title>{{ post.title }}</title>
-                <description>{{ post.excerpt }}</description>
-                <link>http://localhost{{ url("posts/show/"~post.id) }}</link>
-                <guid>http://localhost{{ url("posts/show/"~post.id) }}</guid>
+                <title>{{ post.title|e }}</title>
+                <description>{{ post.excerpt|e }}</description>
+                <link>{{ config.blog.url }}{{ url("posts/show/"~post.id) }}</link>
+                <guid>{{ config.blog.url }}{{ url("posts/show/"~post.id) }}</guid>
                 <pubDate>{{ post.rss_date }}</pubDate>
             </item>
         {% endfor %}

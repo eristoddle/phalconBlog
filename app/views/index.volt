@@ -10,7 +10,7 @@
                 "rel": "alternate",
                 "type": "application/rss+xml",
                 "title": "RSS Feed for Phalcon Blog",
-                "href": "/phalconBlog/posts/feed"
+                "href": config.application.baseUri~"posts/feed"
             ],
              true,
              true,

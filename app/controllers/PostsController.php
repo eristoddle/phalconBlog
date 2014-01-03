@@ -364,6 +364,9 @@ class PostsController extends ControllerBase {
             curl_setopt($ch, CURLOPT_POST, true);
             curl_setopt($ch, CURLOPT_POSTFIELDS, trim($request));
             $result = curl_exec($ch);
+            if($result === false){
+                $result = "Curl Error";
+            }
             $this->pingLogger->log($ping_url . PHP_EOL . $result);
         }
         curl_close($ch);

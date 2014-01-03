@@ -16,7 +16,6 @@ class Security extends Plugin {
 
             $acl = new Phalcon\Acl\Adapter\Memory();
             $acl->setDefaultAction(Phalcon\Acl::DENY);
-
             $roles = array(
                 'users' => new Phalcon\Acl\Role('Users'),
                 'guests' => new Phalcon\Acl\Role('Guests')
@@ -36,7 +35,7 @@ class Security extends Plugin {
 
             $public = array(
                 'index' => array('index'),
-                'posts' => array('index', 'search', 'show', 'comment'),
+                'posts' => array('index', 'search', 'show', 'comment', 'feed'),
                 'users' => array('login', 'index'),
                 'js' => array('jquery')
             );
